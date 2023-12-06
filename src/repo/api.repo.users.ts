@@ -1,4 +1,4 @@
-import { User } from '../entities/users.js';
+import { User } from '../entities/user.js';
 
 export class ApiRepoUsers {
   apiUrl = 'http://localhost:2800/users';
