@@ -1,4 +1,4 @@
-import { User } from '../entities/users.js';
+import { User } from '../entities/user.js';
 import { ApiRepoUsers } from './api.repo.users.js';
 
 describe('Given ApiRepoClass', () => {
