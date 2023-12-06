@@ -1,7 +1,6 @@
 import { User } from '../../entities/user';
-import usersReducer, { login, logout } from './users.slice';
+import usersReducer, { login, logout, UsersState } from './users.slice';
 import { LoginAnswer } from '../../types/login.answer';
-import { UsersState } from './users.slice';
 
 describe('User slice/login reducer', () => {
   it('should turn state into User', () => {
