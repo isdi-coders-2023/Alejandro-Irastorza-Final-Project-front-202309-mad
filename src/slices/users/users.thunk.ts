@@ -1,16 +1,18 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ApiRepoUsers } from '../../repo/api.repo.users';
 import { User } from '../../entities/user';
+import { LoginAnswer } from '../../types/login.answer';
 
 export const loginThunk = createAsyncThunk<
-  User,
+  LoginAnswer,
   {
     repo: ApiRepoUsers;
-    user: Partial<User>;
+    loginUser: Partial<User>;
   }
->('users/login', async ({ repo, user }) => {
+>('users/login', async ({ repo, loginUser }) => {
   console.log('Arrived to usersThunk');
-  const loginResponse = await repo.userLogin(user);
+  const loginResponse = await repo.userLogin(loginUser);
   console.log('Login Response ', loginResponse);
+
   return loginResponse;
 });

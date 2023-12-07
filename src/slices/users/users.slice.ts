@@ -3,6 +3,7 @@ import { User } from '../../entities/user.js';
 // import { LoginAnswer } from '../../types/login.answer.js';
 import { loginThunk } from './users.thunk.js';
 import { LoginAnswer } from '../../types/login.answer.js';
+import { stat } from 'fs';
 
 export type UsersState = {
   loggedUser: User | null;
@@ -31,12 +32,16 @@ export const usersSlice = createSlice({
     builder.addCase(loginThunk.pending, (state: UsersState) => {
       console.log('Loading');
       state.loginState = 'logging';
+      state.loggedUser = null;
+      state.userToken = null;
       return state;
     });
     builder.addCase(loginThunk.rejected, (state: UsersState) => {
       console.log('Login rejected', state);
       state.loginState = 'logout';
       state.loggedUser = null;
+      state.userToken = null;
+
       return state;
     });
     builder.addCase(

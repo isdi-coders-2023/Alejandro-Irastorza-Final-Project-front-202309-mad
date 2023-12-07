@@ -10,7 +10,7 @@ export function useUsers() {
   const usersRepo = new ApiRepoUsers();
 
   const doLogin = (userToLogin: Partial<User>) => {
-    dispatch(loginThunk({ repo: usersRepo, user: userToLogin }));
+    dispatch(loginThunk({ repo: usersRepo, loginUser: userToLogin }));
     console.log('doLogin from hook ', userToLogin, usersRepo);
   };
 
