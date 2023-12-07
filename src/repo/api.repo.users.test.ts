@@ -21,7 +21,7 @@ describe('Given ApiRepoClass', () => {
     });
 
     test('Then the method userRegister should be used', async () => {
-      const result = await repo.userRegister({} as FormData);
+      const result = await repo.userRegister({} as User);
       expect(jsonMock).toHaveBeenCalled();
       expect(result).toStrictEqual({});
     });
@@ -46,7 +46,7 @@ describe('Given ApiRepoClass', () => {
     });
 
     test('Then the method userLogin should throw an error', async () => {
-      await expect(repo.userRegister({} as FormData)).rejects.toThrow();
+      await expect(repo.userRegister({} as Partial<User>)).rejects.toThrow();
     });
   });
 });
