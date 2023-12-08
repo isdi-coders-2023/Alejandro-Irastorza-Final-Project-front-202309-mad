@@ -1,0 +1,10 @@
+import { configureStore } from '@reduxjs/toolkit';
+import usersReducer from '../slices/users/users.slice.js';
+
+export const store = configureStore({
+  reducer: {
+    users: usersReducer,
+  },
+});
+
+export type AppDispatch = typeof store.dispatch;
