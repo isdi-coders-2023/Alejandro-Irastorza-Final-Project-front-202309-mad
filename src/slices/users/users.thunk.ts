@@ -10,9 +10,16 @@ export const loginThunk = createAsyncThunk<
     loginUser: Partial<User>;
   }
 >('users/login', async ({ repo, loginUser }) => {
-  console.log('Arrived to usersThunk');
   const loginResponse = await repo.userLogin(loginUser);
-  console.log('Login Response ', loginResponse);
 
   return loginResponse;
+});
+
+export const registerThunk = createAsyncThunk<
+  User,
+  { repo: ApiRepoUsers; registerUser: Partial<User> }
+>('users/register', async ({ repo, registerUser }) => {
+  const registerResponse = await repo.userRegister(registerUser);
+
+  return registerResponse;
 });
