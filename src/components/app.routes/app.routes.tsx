@@ -1,9 +1,14 @@
-import { Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
+import { Login } from '../login/login';
+import { Register } from '../register/register';
 
 export function AppRoutes() {
   return (
     <main>
-      <Routes></Routes>
+      <Routes>
+        <Route path="/login" element={<Login></Login>}></Route>
+        <Route path="/register" element={<Register></Register>}></Route>
+      </Routes>
     </main>
   );
 }
