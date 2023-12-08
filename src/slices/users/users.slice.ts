@@ -1,9 +1,8 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { User } from '../../entities/user.js';
 // import { LoginAnswer } from '../../types/login.answer.js';
-import { loginThunk } from './users.thunk.js';
+import { loginThunk, registerThunk } from './users.thunk.js';
 import { LoginAnswer } from '../../types/login.answer.js';
-import { stat } from 'fs';
 
 export type UsersState = {
   loggedUser: User | null;
@@ -21,9 +20,6 @@ export const usersSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    // login: (state: UsersState, { payload }: PayloadAction<LoginAnswer>) => {
-    //   state.loggedUser = payload.loggedUser;
-    // },
     logout: (state: UsersState) => {
       state.loggedUser = null;
     },
@@ -55,6 +51,9 @@ export const usersSlice = createSlice({
         return state;
       }
     );
+    builder.addCase(registerThunk.fulfilled, () => {
+      console.log('Registered');
+    });
   },
 });
 

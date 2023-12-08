@@ -1,35 +1,21 @@
+import { UsersState } from './users.slice';
+import { usersSlice } from '../../slices/users/users.slice';
 import { User } from '../../entities/user';
-import usersReducer, { login, logout, UsersState } from './users.slice';
-import { LoginAnswer } from '../../types/login.answer';
 
-describe('User slice/login reducer', () => {
-  it('should turn state into User', () => {
-    const initialState: UsersState = {
-      loggedUser: null,
-    };
+const { reducer, actions } = usersSlice;
 
-    const loginPayload: LoginAnswer = {
-      loggedUser: {} as User,
-    };
+describe('Given userSlice', () => {
+  describe('When we call reducer with logout action', () => {
+    test('then it should set loggedUser to null ', () => {
+      const currentState = {
+        loggedUser: {} as User,
+        loginState: 'logged',
+        userToken: '',
+      } as UsersState;
 
-    const action = login(loginPayload);
+      const newState = reducer(currentState, actions.logout());
 
-    const newState = usersReducer(initialState, action);
-
-    expect(newState.loggedUser).toEqual(loginPayload.loggedUser);
-  });
-});
-
-describe('User slice/register reducer', () => {
-  it('should turn state into null', () => {
-    const initialState: UsersState = {
-      loggedUser: {} as User,
-    };
-
-    const action = logout();
-
-    const newState = usersReducer(initialState, action);
-
-    expect(newState.loggedUser).toEqual(null);
+      expect(newState.loggedUser).toBe(null);
+    });
   });
 });
