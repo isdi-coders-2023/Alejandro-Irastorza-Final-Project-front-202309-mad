@@ -1,6 +1,4 @@
 import { Routes } from 'react-router-dom';
-// import { Login } from '../login/login';
-// import { Register } from '../register/register';
 
 export function AppRoutes() {
   return (
