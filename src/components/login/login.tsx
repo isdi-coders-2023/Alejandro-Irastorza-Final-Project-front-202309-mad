@@ -14,10 +14,6 @@ export function Login() {
     const userLoginData: Partial<User> = {
       email: formData.get('email')?.toString(),
       password: formData.get('password')?.toString(),
-      // email: (formElement.elements.namedItem('email') as HTMLInputElement)
-      //   .value,
-      // password: (formElement.elements.namedItem('password') as HTMLInputElement)
-      //   .value,
     };
     doLogin(userLoginData);
     console.log(userLoginData);
