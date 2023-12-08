@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../store/store';
 import { ApiRepoUsers } from '../repo/api.repo.users';
 import { User } from '../entities/user';
-import { loginThunk } from '../slices/users/users.thunk';
+import { loginThunk, registerThunk } from '../slices/users/users.thunk';
 
 export function useUsers() {
   const dispatch = useDispatch<AppDispatch>();
@@ -14,7 +14,13 @@ export function useUsers() {
     console.log('doLogin from hook ', userToLogin, usersRepo);
   };
 
+  const doRegister = (userToRegister: Partial<User>) => {
+    console.log('Desde el hook userToRegister:', userToRegister);
+    dispatch(registerThunk({ repo: usersRepo, registerUser: userToRegister }));
+  };
+
   return {
     doLogin,
+    doRegister,
   };
 }
