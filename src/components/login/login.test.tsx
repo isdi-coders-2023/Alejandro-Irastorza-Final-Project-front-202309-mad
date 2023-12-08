@@ -24,7 +24,6 @@ describe('Login Component', () => {
   test('Then it submits form with correct values', async () => {
     const fromElement = screen.getByRole('form');
     const inputElements = screen.getAllByRole('textbox');
-    // const showPasswordButton = screen.getByRole('button', { name: 'See' });
     const submitButton = screen.getByRole('button', { name: 'Iniciar sesión' });
     await userEvent.type(inputElements[0], 'test');
     await userEvent.type(inputElements[1], 'test');
