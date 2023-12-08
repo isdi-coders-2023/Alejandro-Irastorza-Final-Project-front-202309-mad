@@ -1,6 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { User } from '../../entities/user.js';
-// import { LoginAnswer } from '../../types/login.answer.js';
 import { loginThunk, registerThunk } from './users.thunk.js';
 import { LoginAnswer } from '../../types/login.answer.js';
 
