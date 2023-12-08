@@ -1,0 +1,22 @@
+import { Routes } from 'react-router-dom';
+
+export function AppRoutes() {
+  return (
+    <main>
+      <Routes></Routes>
+    </main>
+  );
+}
+
+//  <Route path="/" element={<MenuPage></MenuPage>}></Route>
+//       <Route path="/menu" element={<MenuPage></MenuPage>}></Route>
+//       <Route path="/admin/login" element={<LoginPage></LoginPage>}></Route>
+//       <Route
+//         path="/admin/register"
+//         element={<RegisterPage></RegisterPage>}
+//       ></Route>
+//       <Route path="/admin/login" element={<LoginPage></LoginPage>}></Route>
+//       <Route
+//         path="/admin/dashboard"
+//         element={<MenuPannelPage></MenuPannelPage>}
+//       ></Route>
