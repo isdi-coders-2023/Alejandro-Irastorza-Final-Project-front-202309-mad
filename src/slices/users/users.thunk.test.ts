@@ -4,13 +4,13 @@ import { store } from '../../store/store';
 import { LoginAnswer } from '../../types/login.answer';
 import { loginThunk, registerThunk } from './users.thunk';
 
-const mockedRepo = {
-  userLogin: jest.fn().mockReturnValue({} as LoginAnswer),
-  userRegister: jest.fn().mockReturnValue({} as User),
-} as unknown as ApiRepoUsers;
-
 describe('Given loginThunk', () => {
-  describe('When we give a repo and user', () => {
+  describe('When we dispatch succesfully', () => {
+    const mockedRepo = {
+      userLogin: jest.fn().mockReturnValue({} as LoginAnswer),
+      userRegister: jest.fn().mockReturnValue({} as User),
+    } as unknown as ApiRepoUsers;
+
     test('Then it should dispatch', async () => {
       await store.dispatch(
         loginThunk({ repo: mockedRepo, loginUser: {} as Partial<User> })
