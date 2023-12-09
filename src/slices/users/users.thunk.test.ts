@@ -19,7 +19,7 @@ describe('Given loginThunk', () => {
     });
     test('Then it should dispatch', async () => {
       await store.dispatch(
-        registerThunk({ repo: mockedRepo, registerUser: {} as Partial<User> })
+        registerThunk({ repo: mockedRepo, registerUser: {} as FormData })
       );
       expect(mockedRepo.userLogin).toHaveBeenCalled();
     });

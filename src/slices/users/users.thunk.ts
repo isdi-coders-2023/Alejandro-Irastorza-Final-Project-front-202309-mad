@@ -17,7 +17,7 @@ export const loginThunk = createAsyncThunk<
 
 export const registerThunk = createAsyncThunk<
   User,
-  { repo: ApiRepoUsers; registerUser: Partial<User> }
+  { repo: ApiRepoUsers; registerUser: FormData }
 >('users/register', async ({ repo, registerUser }) => {
   const registerResponse = await repo.userRegister(registerUser);
 
