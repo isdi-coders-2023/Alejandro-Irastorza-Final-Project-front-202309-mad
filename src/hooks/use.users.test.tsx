@@ -31,7 +31,7 @@ describe('Given useUsers hook', () => {
 
       const { doRegister } = result.current;
 
-      doRegister({} as Partial<User>);
+      doRegister({} as FormData);
 
       expect(dispatch).toHaveBeenCalled();
     });

@@ -14,7 +14,7 @@ export function useUsers() {
     console.log('doLogin from hook ', userToLogin, usersRepo);
   };
 
-  const doRegister = (userToRegister: Partial<User>) => {
+  const doRegister = (userToRegister: FormData) => {
     console.log('Desde el hook userToRegister:', userToRegister);
     dispatch(registerThunk({ repo: usersRepo, registerUser: userToRegister }));
   };
