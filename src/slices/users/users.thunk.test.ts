@@ -24,4 +24,17 @@ describe('Given loginThunk', () => {
       expect(mockedRepo.userLogin).toHaveBeenCalled();
     });
   });
+
+  describe('When we dispatch unsuccesfully', () => {
+    const mockedRepo = {
+      userLogin: jest.fn().mockRejectedValue({}),
+    } as unknown as ApiRepoUsers;
+
+    test('Then it should dispatch', async () => {
+      await store.dispatch(
+        loginThunk({ repo: mockedRepo, loginUser: {} as Partial<User> })
+      );
+      expect(mockedRepo.userLogin).toHaveBeenCalled();
+    });
+  });
 });
