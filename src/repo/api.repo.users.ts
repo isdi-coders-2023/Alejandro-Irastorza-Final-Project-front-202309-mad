@@ -21,14 +21,11 @@ export class ApiRepoUsers {
     return apiResponse.json();
   }
 
-  async userRegister(userToRegister: Partial<User>): Promise<User> {
+  async userRegister(userToRegister: FormData): Promise<User> {
     const finalUrl = `${this.apiUrl}/admin/register`;
     const apiResponse = await fetch(finalUrl, {
       method: 'POST',
-      body: JSON.stringify(userToRegister),
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      body: userToRegister,
     });
     if (!apiResponse.ok)
       throw new Error(apiResponse.status + ' ' + apiResponse.statusText);
