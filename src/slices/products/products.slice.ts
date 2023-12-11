@@ -1,6 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { Product } from '../../entities/product';
 import {
+  addNewProductThunk,
   deleteProductThunk,
   loadOneProductThunk,
   loadProductsThunk,
@@ -75,6 +76,10 @@ export const productsSlice = createSlice({
         state.products = payload;
       }
     );
+
+    builder.addCase(addNewProductThunk.fulfilled, (state: ProductsState) => {
+      console.log('product added', state.products);
+    });
   },
 });
 
