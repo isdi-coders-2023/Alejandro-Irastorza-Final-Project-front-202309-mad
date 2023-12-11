@@ -1,7 +1,10 @@
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../store/store';
 import { ApiRepoProducts } from '../repo/api.repo.products';
-import { loadProductsThunk } from '../slices/products/products.thunk';
+import {
+  loadOneProductThunk,
+  loadProductsThunk,
+} from '../slices/products/products.thunk';
 
 export function useProducts() {
   const dispatch = useDispatch<AppDispatch>();
@@ -12,5 +15,9 @@ export function useProducts() {
     dispatch(loadProductsThunk(productsRepo));
   };
 
-  return { loadAllProducts };
+  const loadOneProduct = (id: string) => {
+    dispatch(loadOneProductThunk({ repo: productsRepo, id: id }));
+  };
+
+  return { loadAllProducts, loadOneProduct };
 }
