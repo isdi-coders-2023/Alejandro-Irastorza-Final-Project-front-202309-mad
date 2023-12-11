@@ -5,7 +5,7 @@ import { ApiRepoProducts } from '../../repo/api.repo.products';
 export const loadProductsThunk = createAsyncThunk<Product[], ApiRepoProducts>(
   'products/load',
   async (repo) => {
-    const products = repo.getAllProducts();
+    const products = await repo.getAllProducts();
     return products;
   }
 );
