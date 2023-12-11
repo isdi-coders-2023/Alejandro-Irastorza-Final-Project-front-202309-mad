@@ -9,8 +9,9 @@ import {
 
 export type ProductsState = {
   currentProduct: Product | null;
-  products: Product[] | null;
+  products: Product[];
   productState: 'idle' | 'loading' | 'loaded' | 'error';
+  productDeleteState: 'idle' | 'loading';
   productFilter:
     | 'Todos los productos'
     | 'Litros 1.0'
@@ -21,8 +22,9 @@ export type ProductsState = {
 
 const initialState: ProductsState = {
   currentProduct: null,
-  products: null,
+  products: [],
   productState: 'idle',
+  productDeleteState: 'idle',
   productFilter: 'Todos los productos',
 };
 
@@ -32,7 +34,6 @@ export const productsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(loadProductsThunk.pending, (state: ProductsState) => {
-      console.log('Loaded products rejected');
       state.productState = 'loading';
       return state;
     });
@@ -71,11 +72,11 @@ export const productsSlice = createSlice({
     });
 
     builder.addCase(deleteProductThunk.fulfilled, (state: ProductsState) => {
-      state.productState = 'loaded';
+      state.productDeleteState = 'idle';
     });
 
     builder.addCase(deleteProductThunk.pending, (state: ProductsState) => {
-      state.productState = 'loading';
+      state.productDeleteState = 'loading';
     });
 
     builder.addCase(addNewProductThunk.fulfilled, (state: ProductsState) => {
