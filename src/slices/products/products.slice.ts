@@ -10,12 +10,19 @@ export type ProductsState = {
   currentProduct: Product | null;
   products: Product[] | null;
   productState: 'idle' | 'loading' | 'loaded' | 'error';
+  productFilter:
+    | 'Todos los productos'
+    | 'Litros 1.0'
+    | 'Sueritos'
+    | 'Litros 2.0'
+    | 'Shots';
 };
 
 const initialState: ProductsState = {
   currentProduct: null,
   products: null,
   productState: 'idle',
+  productFilter: 'Todos los productos',
 };
 
 export const productsSlice = createSlice({
