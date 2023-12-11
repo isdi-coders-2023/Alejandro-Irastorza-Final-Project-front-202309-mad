@@ -30,4 +30,16 @@ describe('Given useUsers hook', () => {
       expect(dispatch).toHaveBeenCalled();
     });
   });
+
+  describe('when we execute deleteProduct', () => {
+    test('then dispatch should be called ', () => {
+      const { result } = renderHook(() => useProducts());
+
+      const { deleteProduct } = result.current;
+
+      deleteProduct('');
+
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
 });

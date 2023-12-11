@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../store/store';
 import { ApiRepoProducts } from '../repo/api.repo.products';
 import {
+  deleteProductThunk,
   loadOneProductThunk,
   loadProductsThunk,
 } from '../slices/products/products.thunk';
@@ -19,5 +20,9 @@ export function useProducts() {
     dispatch(loadOneProductThunk({ repo: productsRepo, id: id }));
   };
 
-  return { loadAllProducts, loadOneProduct };
+  const deleteProduct = (id: string) => {
+    dispatch(deleteProductThunk({ repo: productsRepo, id: id }));
+  };
+
+  return { loadAllProducts, loadOneProduct, deleteProduct };
 }
