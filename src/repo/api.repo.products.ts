@@ -32,14 +32,14 @@ export class ApiRepoProducts {
     return apiResponse.json();
   }
 
-  async deleteProduct(id: string): Promise<Product[]> {
+  async deleteProduct(id: string): Promise<Product> {
     const finalUrl = `${this.apiUrl}/admin/delete/${id}`;
     const apiResponse = await fetch(finalUrl, {
       method: 'DELETE',
     });
     if (!apiResponse.ok)
       throw new Error(apiResponse.status + ' ' + apiResponse.statusText);
-    return apiResponse.json();
+    return {} as Product;
   }
 
   async getAllProducts(): Promise<Product[]> {

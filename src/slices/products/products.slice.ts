@@ -70,12 +70,13 @@ export const productsSlice = createSlice({
       return state;
     });
 
-    builder.addCase(
-      deleteProductThunk.fulfilled,
-      (state: ProductsState, { payload }: PayloadAction<Product[]>) => {
-        state.products = payload;
-      }
-    );
+    builder.addCase(deleteProductThunk.fulfilled, (state: ProductsState) => {
+      state.productState = 'loaded';
+    });
+
+    builder.addCase(deleteProductThunk.pending, (state: ProductsState) => {
+      state.productState = 'loading';
+    });
 
     builder.addCase(addNewProductThunk.fulfilled, (state: ProductsState) => {
       console.log('product added', state.products);

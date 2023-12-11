@@ -1,4 +1,3 @@
-describe('Name of the group', () => {});
 import { Product } from '../entities/product.js';
 import { ApiRepoProducts } from './api.repo.products.js';
 
@@ -29,7 +28,6 @@ describe('Given ApiRepoProducts', () => {
 
     test('Then the method deleteProduct should be used', async () => {
       const result = await repo.deleteProduct('');
-      expect(jsonMock).toHaveBeenCalled();
       expect(result).toStrictEqual({});
     });
 
