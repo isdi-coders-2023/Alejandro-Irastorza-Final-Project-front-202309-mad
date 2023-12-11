@@ -3,14 +3,11 @@ import { Product } from '../entities/product';
 export class ApiRepoProducts {
   apiUrl = 'http://localhost:2800/products';
 
-  async createProduct(newProduct: Omit<Product, 'id'>): Promise<Product> {
-    const finalUrl = `${this.apiUrl}/admin/add/`;
+  async createProduct(newProduct: FormData): Promise<Product> {
+    const finalUrl = `${this.apiUrl}/admin/add`;
     const apiResponse = await fetch(finalUrl, {
       method: 'POST',
-      body: JSON.stringify(newProduct),
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      body: newProduct,
     });
     if (!apiResponse.ok)
       throw new Error(apiResponse.status + ' ' + apiResponse.statusText);
