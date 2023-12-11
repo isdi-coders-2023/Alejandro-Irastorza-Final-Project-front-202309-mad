@@ -9,3 +9,11 @@ export const loadProductsThunk = createAsyncThunk<Product[], ApiRepoProducts>(
     return products;
   }
 );
+
+export const loadOneProductThunk = createAsyncThunk<
+  Product,
+  { repo: ApiRepoProducts; id: Product['id'] }
+>('product/load', async ({ repo, id }) => {
+  const product = await repo.getProductById(id);
+  return product;
+});

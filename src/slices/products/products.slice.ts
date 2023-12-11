@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { Product } from '../../entities/product';
-import { loadProductsThunk } from './products.thunk';
+import { loadOneProductThunk, loadProductsThunk } from './products.thunk';
 
 export type ProductsState = {
   currentProduct: Product | null;
@@ -25,11 +25,6 @@ export const productsSlice = createSlice({
       return state;
     });
 
-    builder.addCase(loadProductsThunk.rejected, (state: ProductsState) => {
-      state.productState = 'error';
-      return state;
-    });
-
     builder.addCase(
       loadProductsThunk.fulfilled,
       (state: ProductsState, { payload }: PayloadAction<Product[]>) => {
@@ -38,6 +33,30 @@ export const productsSlice = createSlice({
         return state;
       }
     );
+
+    builder.addCase(loadProductsThunk.rejected, (state: ProductsState) => {
+      state.productState = 'error';
+      return state;
+    });
+
+    builder.addCase(loadOneProductThunk.pending, (state: ProductsState) => {
+      state.productState = 'loading';
+      return state;
+    });
+
+    builder.addCase(
+      loadOneProductThunk.fulfilled,
+      (state: ProductsState, { payload }: PayloadAction<Product>) => {
+        state.productState = 'loaded';
+        state.currentProduct = payload;
+        return state;
+      }
+    );
+
+    builder.addCase(loadOneProductThunk.rejected, (state: ProductsState) => {
+      state.productState = 'error';
+      return state;
+    });
   },
 });
 
