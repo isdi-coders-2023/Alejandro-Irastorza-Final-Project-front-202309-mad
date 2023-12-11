@@ -2,6 +2,7 @@ import { Product } from '../../entities/product';
 import { ApiRepoProducts } from '../../repo/api.repo.products';
 import { store } from '../../store/store';
 import {
+  addNewProductThunk,
   deleteProductThunk,
   loadOneProductThunk,
   loadProductsThunk,
@@ -13,6 +14,7 @@ describe('Given loadProductsThunk', () => {
       getAllProducts: jest.fn().mockReturnValue([] as Product[]),
       getProductById: jest.fn().mockReturnValue({} as Product),
       deleteProduct: jest.fn().mockReturnValue([] as Product[]),
+      createProduct: jest.fn().mockReturnValue({} as Product),
     } as unknown as ApiRepoProducts;
 
     test('Then it should dispatch', async () => {
@@ -28,6 +30,13 @@ describe('Given loadProductsThunk', () => {
     test('Then it should dispatch', async () => {
       await store.dispatch(deleteProductThunk({ repo: mockedRepo, id: '' }));
       expect(mockedRepo.deleteProduct).toHaveBeenCalled();
+    });
+
+    test('Then it should dispatch', async () => {
+      await store.dispatch(
+        addNewProductThunk({ repo: mockedRepo, productToAdd: {} as FormData })
+      );
+      expect(mockedRepo.createProduct).toHaveBeenCalled();
     });
   });
 });
