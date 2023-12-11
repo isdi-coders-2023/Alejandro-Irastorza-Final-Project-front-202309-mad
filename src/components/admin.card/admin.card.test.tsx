@@ -17,7 +17,9 @@ describe('Given AdminCard component', () => {
     <Router>
       <Provider store={store}>
         <AdminCard
-          product={{ name: 'Product name test' } as Product}
+          product={
+            { name: 'Product name test', modelImg: { url: '' } } as Product
+          }
         ></AdminCard>
       </Provider>
     </Router>
