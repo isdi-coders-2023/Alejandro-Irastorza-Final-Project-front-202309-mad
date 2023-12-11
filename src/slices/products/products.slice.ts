@@ -1,6 +1,10 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { Product } from '../../entities/product';
-import { loadOneProductThunk, loadProductsThunk } from './products.thunk';
+import {
+  deleteProductThunk,
+  loadOneProductThunk,
+  loadProductsThunk,
+} from './products.thunk';
 
 export type ProductsState = {
   currentProduct: Product | null;
@@ -57,6 +61,13 @@ export const productsSlice = createSlice({
       state.productState = 'error';
       return state;
     });
+
+    builder.addCase(
+      deleteProductThunk.fulfilled,
+      (state: ProductsState, { payload }: PayloadAction<Product[]>) => {
+        state.products = payload;
+      }
+    );
   },
 });
 

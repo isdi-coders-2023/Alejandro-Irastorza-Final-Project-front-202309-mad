@@ -17,3 +17,11 @@ export const loadOneProductThunk = createAsyncThunk<
   const product = await repo.getProductById(id);
   return product;
 });
+
+export const deleteProductThunk = createAsyncThunk<
+  Product[],
+  { repo: ApiRepoProducts; id: Product['id'] }
+>('product/delete', async ({ repo, id }) => {
+  const deleteProduct = await repo.deleteProduct(id);
+  return deleteProduct;
+});
