@@ -1,41 +1,11 @@
 import { SyntheticEvent } from 'react';
-import { useProducts } from '../../hooks/use.products';
+import { Link } from 'react-router-dom';
 
 type Params = {
   title?: string;
+  handleSubmit: (event: SyntheticEvent) => void;
 };
-export function ProductForm({ title = 'Untitled' }: Params) {
-  const { addNewProduct } = useProducts();
-  const handleSubmit = (event: SyntheticEvent) => {
-    event.preventDefault();
-
-    const formElement = event.target as HTMLFormElement;
-    const formData = new FormData(formElement);
-    const newCheckbox = formData.get('new');
-    const noStockCheckbox = formData.get('noStock');
-    const topOrderCheckbox = formData.get('topOrder');
-
-    if (newCheckbox === 'on') {
-      formData.set('new', 'true');
-    } else {
-      formData.set('new', 'false');
-    }
-
-    if (noStockCheckbox === 'on') {
-      formData.set('noStock', 'true');
-    } else {
-      formData.set('noStock', 'false');
-    }
-
-    if (topOrderCheckbox === 'on') {
-      formData.set('topOrder', 'true');
-    } else {
-      formData.set('topOrder', 'false');
-    }
-
-    addNewProduct(formData);
-  };
-
+export function ProductForm({ title = 'Untitled', handleSubmit }: Params) {
   return (
     <form aria-label="form" onSubmit={handleSubmit}>
       <h2>{title}</h2>
@@ -76,7 +46,9 @@ export function ProductForm({ title = 'Untitled' }: Params) {
         </div>
         <div>
           <button type="submit">Agregar</button>
-          <button>Cancelar</button>
+          <button>
+            <Link to={'/admin'}>Cancelar</Link>
+          </button>
         </div>
       </div>
     </form>

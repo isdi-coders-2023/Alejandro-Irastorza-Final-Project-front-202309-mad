@@ -5,12 +5,16 @@ import { Provider } from 'react-redux';
 import { store } from '../../store/store';
 import { ProductForm } from './new.product';
 import userEvent from '@testing-library/user-event';
+import { SyntheticEvent } from 'react';
 
 describe('Given the ProductForm component', () => {
+  const mockedHandleSubmit = (event: SyntheticEvent) => {
+    console.log(event);
+  };
   render(
     <Router>
       <Provider store={store}>
-        <ProductForm></ProductForm>
+        <ProductForm handleSubmit={mockedHandleSubmit}></ProductForm>
       </Provider>
     </Router>
   );
