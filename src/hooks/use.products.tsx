@@ -6,6 +6,7 @@ import {
   deleteProductThunk,
   loadOneProductThunk,
   loadProductsThunk,
+  updateCurrentProductThunk,
 } from '../slices/products/products.thunk';
 
 export function useProducts() {
@@ -31,5 +32,17 @@ export function useProducts() {
     );
   };
 
-  return { loadAllProducts, loadOneProduct, deleteProduct, addNewProduct };
+  const updateCurrentProduct = (id: string, productToUpdate: FormData) => {
+    dispatch(
+      updateCurrentProductThunk({ repo: productsRepo, id, productToUpdate })
+    );
+  };
+
+  return {
+    loadAllProducts,
+    loadOneProduct,
+    deleteProduct,
+    addNewProduct,
+    updateCurrentProduct,
+  };
 }

@@ -50,4 +50,15 @@ describe('Given useUsers hook', () => {
       expect(dispatch).toHaveBeenCalled();
     });
   });
+
+  describe('when we execute updateCurrentProduct', () => {
+    test('then dispatch should be called ', () => {
+      const { result } = renderHook(() => useProducts());
+      const { updateCurrentProduct } = result.current;
+
+      updateCurrentProduct('', {} as FormData);
+
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
 });
