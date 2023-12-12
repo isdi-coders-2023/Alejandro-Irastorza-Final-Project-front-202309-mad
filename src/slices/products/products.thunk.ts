@@ -33,3 +33,11 @@ export const addNewProductThunk = createAsyncThunk<
   const addProduct = await repo.createProduct(productToAdd);
   return addProduct;
 });
+
+export const updateCurrentProductThunk = createAsyncThunk<
+  Product,
+  { repo: ApiRepoProducts; id: Product['id']; productToUpdate: FormData }
+>('product/update', async ({ repo, id, productToUpdate }) => {
+  const updateProduct = await repo.updateProduct(id, productToUpdate);
+  return updateProduct;
+});
