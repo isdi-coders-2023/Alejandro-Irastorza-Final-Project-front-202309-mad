@@ -13,9 +13,10 @@ describe('Given MenuCard component', () => {
       </Provider>
     </Router>
   );
-
-  test('Then it should render', async () => {
-    const priceElement = screen.getByText('Precio');
-    expect(priceElement).toBeInTheDocument();
+  describe('When we render it with empty state', () => {
+    test('Then it should render a error text', async () => {
+      const errorDivElement = screen.getByText('Error loading your product.');
+      expect(errorDivElement).toBeInTheDocument();
+    });
   });
 });
