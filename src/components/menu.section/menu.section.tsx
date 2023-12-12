@@ -1,27 +1,22 @@
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store/store';
-import { useEffect } from 'react';
 import { MenuCard } from '../menu.card/menu.card';
-import { useProducts } from '../../hooks/use.products';
+import { Product } from '../../entities/product';
 
 type Props = {
   category: string;
   headingDescription: string;
+  products: Product[] | null;
 };
 export function MenuSection({
   category = 'Untitled',
   headingDescription = 'No description added.',
+  products,
 }: Props) {
-  const { products } = useSelector((state: RootState) => state.products);
-  const { loadAllProducts } = useProducts();
-
-  useEffect(() => {
-    loadAllProducts();
-  }, []);
-
-  const productsByCategory = products.filter(
-    (product) => product.category === category
-  );
+  let productsByCategory;
+  if (products) {
+    productsByCategory = products.filter(
+      (product) => product.category === category
+    );
+  }
 
   console.log('productsByCategory ', productsByCategory);
 
@@ -29,9 +24,13 @@ export function MenuSection({
     <div>
       <h2>{category}</h2>
       <h3>{headingDescription}</h3>
-      {productsByCategory.map((product) => (
-        <MenuCard key={product.id} product={product}></MenuCard>
-      ))}
+      {productsByCategory ? (
+        productsByCategory.map((product) => (
+          <MenuCard key={product.id} product={product}></MenuCard>
+        ))
+      ) : (
+        <p>No products</p>
+      )}
     </div>
   );
 }
