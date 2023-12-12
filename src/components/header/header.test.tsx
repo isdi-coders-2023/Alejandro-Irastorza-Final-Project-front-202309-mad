@@ -16,7 +16,6 @@ describe('Given Header component', () => {
   describe('when we render it without title', () => {
     test('Then it should render an image', async () => {
       const image = screen.getByRole('img');
-      // await fireEvent.click(goBackButton);
       expect(image).toBeInTheDocument();
     });
   });
