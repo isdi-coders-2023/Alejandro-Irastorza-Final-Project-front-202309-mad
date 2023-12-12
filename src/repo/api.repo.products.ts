@@ -14,17 +14,11 @@ export class ApiRepoProducts {
     return apiResponse.json();
   }
 
-  async updateProduct(
-    id: string,
-    updatedProduct: Partial<Product>
-  ): Promise<Product> {
-    const finalUrl = `${this.apiUrl}/admin/add/${id}`;
+  async updateProduct(id: string, updatedProduct: FormData): Promise<Product> {
+    const finalUrl = `${this.apiUrl}/admin/update/${id}`;
     const apiResponse = await fetch(finalUrl, {
       method: 'PATCH',
-      body: JSON.stringify(updatedProduct),
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      body: updatedProduct,
     });
 
     if (!apiResponse.ok)

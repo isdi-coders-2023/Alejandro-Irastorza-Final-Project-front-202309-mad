@@ -1,4 +1,3 @@
-import { Product } from '../entities/product.js';
 import { ApiRepoProducts } from './api.repo.products.js';
 
 describe('Given ApiRepoProducts', () => {
@@ -21,7 +20,7 @@ describe('Given ApiRepoProducts', () => {
     });
 
     test('Then the method updateProduct should be used', async () => {
-      const result = await repo.updateProduct('', {} as Partial<Product>);
+      const result = await repo.updateProduct('', {} as FormData);
       expect(jsonMock).toHaveBeenCalled();
       expect(result).toStrictEqual({});
     });
@@ -63,9 +62,7 @@ describe('Given ApiRepoProducts', () => {
     });
 
     test('Then the method updateProduct should throw an error', async () => {
-      await expect(
-        repo.updateProduct('', {} as Partial<Product>)
-      ).rejects.toThrow();
+      await expect(repo.updateProduct('', {} as FormData)).rejects.toThrow();
     });
 
     test('Then the method deleteProduct should throw an error', async () => {
