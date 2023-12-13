@@ -1,0 +1,42 @@
+.admin-card-container {
+  width: 276px;
+  height: 359px;
+}
+
+.admin-card-inner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #1a1a1a;
+  border-radius: 25px;
+  height: 330px;
+  padding-block-start: 1rem;
+  img {
+    width: 10rem;
+    height: auto;
+  }
+  h3 {
+    color: #fbfbfb;
+    margin: 0;
+  }
+}
+
+.admin-card-footer-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  a {
+    text-decoration: none;
+    color: #1a1a1a;
+  }
+  p {
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
+}
+
+.admin-card-delete-item {
+  color: #bb0000;
+}
