@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
-// import { RootState } from '../../store/store';
-// import { useSelector } from 'react-redux';
+
 import './details.style.scss';
 import { Product } from '../../entities/product';
 
@@ -9,10 +8,6 @@ type Params = {
   id: string;
 };
 export function Details({ products, id }: Params) {
-  // const { id } = useParams();
-
-  // const { products } = useSelector((state: RootState) => state.products);
-
   if (!products) {
     return <div>There was an error loading the product.</div>;
   }
