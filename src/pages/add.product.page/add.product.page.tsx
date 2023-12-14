@@ -1,6 +1,7 @@
 import { ProductForm } from '../../components/new.product/new.product';
 import { SyntheticEvent } from 'react';
 import { useProducts } from '../../hooks/use.products';
+import './add.product.page.style.scss';
 export function AddProductPage() {
   const { addNewProduct } = useProducts();
   const handleSubmit = (event: SyntheticEvent) => {
@@ -34,11 +35,11 @@ export function AddProductPage() {
   };
 
   return (
-    <>
+    <div className="add-product-page-container">
       <ProductForm
         title="Nuevo producto"
         handleSubmit={handleSubmit}
       ></ProductForm>
-    </>
+    </div>
   );
 }
