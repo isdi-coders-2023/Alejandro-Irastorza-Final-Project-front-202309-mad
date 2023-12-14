@@ -1,27 +1,30 @@
 import { Link } from 'react-router-dom';
 import { Product } from '../../entities/product';
-
+import './menu.card.scss';
 type Params = {
   product?: Product;
 };
 export function MenuCard({ product }: Params) {
   if (!product) return <>Error loading your product.</>;
   return (
-    <Link
-      to={'/menu/details/' + product.id}
-      style={{ textDecoration: 'none', color: 'inherit' }}
-    >
-      <div>
-        <div>
-          {product.new && <p>Nuevo</p>}
-          {product.noStock && <p>Agotado</p>}
-          {product.topOrder && <p>Top pedidos</p>}
+    <li className="card-container">
+      <Link
+        to={'/menu/details/' + product.id}
+        style={{ textDecoration: 'none', color: 'inherit' }}
+      >
+        <div className="card-tags-container">
+          {product.new && <p className="card-new-tag">NUEVO</p>}
+          {product.topOrder && (
+            <p className="card-top-order-tag">TOP PEDIDOS</p>
+          )}
         </div>
-        <h2>{product.name}</h2>
-        <h3>${product.price}</h3>
+        <div className="card-info-container">
+          <h2>{product.name}</h2>
+          <h3>${product.price}</h3>
+        </div>
 
-        <img src={product.modelImg.url} />
-      </div>
-    </Link>
+        <img className="card-image" src={product.modelImg.url} />
+      </Link>
+    </li>
   );
 }
