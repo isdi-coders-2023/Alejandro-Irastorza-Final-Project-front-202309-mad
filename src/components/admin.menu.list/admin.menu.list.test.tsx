@@ -13,15 +13,40 @@ jest.mock('../../hooks/use.products', () => ({
 }));
 
 describe('Given AdminCard component', () => {
-  render(
-    <Router>
-      <Provider store={store}>
-        <AdminMenu filter="Test" products={[] as Product[]}></AdminMenu>
-      </Provider>
-    </Router>
-  );
-  test('Then it should render', async () => {
-    const buttonElement = screen.getByText('Agregar producto');
-    expect(buttonElement).toBeInTheDocument();
+  describe('when we render it with an object', () => {
+    test('then it should be a button in the document', async () => {
+      render(
+        <Router>
+          <Provider store={store}>
+            <AdminMenu
+              filter="Test"
+              products={[
+                {
+                  id: '123',
+                  name: 'Sample',
+                  modelImg: { url: 'Sample url' },
+                } as Product,
+              ]}
+            ></AdminMenu>
+          </Provider>
+        </Router>
+      );
+      const buttonElement = screen.getByText('Agregar producto');
+      expect(buttonElement).toBeInTheDocument();
+    });
+  });
+
+  describe('when we render it without an object', () => {
+    test('then it should be a text in the document', async () => {
+      render(
+        <Router>
+          <Provider store={store}>
+            <AdminMenu filter="Test" products={null}></AdminMenu>
+          </Provider>
+        </Router>
+      );
+      const feedbackMessage = screen.getAllByRole('listitem')[0];
+      expect(feedbackMessage).toBeInTheDocument();
+    });
   });
 });
