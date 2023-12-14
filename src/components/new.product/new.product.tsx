@@ -1,6 +1,7 @@
 import { SyntheticEvent, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from '../../entities/product';
+import './new.product.style.scss';
 
 type Params = {
   title?: string;
@@ -32,10 +33,10 @@ export function ProductForm({
   if (!productToEdit) {
     return (
       <form aria-label="form" onSubmit={handleSubmit}>
-        <h2>{title}</h2>
+        <h2 className="new-product-title">{title}</h2>
 
         <div>
-          <div>
+          <div className="new-product-name-input input-style">
             <p>Nombre del producto</p>
             <input type="text" name="name" />
           </div>
@@ -48,25 +49,36 @@ export function ProductForm({
                 <option value={'Sueritos'}>Sueritos</option>
               </select>
             </div>
-            <div>
-              <p>Precio</p>
+            <div className="input-style">
+              <p>Precio (MXN)</p>
               <input type="number" name="price" />
             </div>
           </div>
-          <div>
+          <div className="input-style">
             <p>Descripcción</p>
-            <input type="text" name="description" />
+            <input className="large-input" type="text" name="description" />
           </div>
           <input type="file" name="modelImg" />
-          <div>
-            <input type="checkbox" name="new" id="Nuevo" />
-            <label htmlFor="Nuevo">Nuevo</label>
+          <div className="new-product-checkbox-list-container">
+            <div className="new-product-input-container">
+              <input
+                className="checkbox-style"
+                type="checkbox"
+                name="new"
+                id="Nuevo"
+              />
+              <label htmlFor="Nuevo">Nuevo</label>
+            </div>
 
-            <input type="checkbox" name="noStock" id="Agotado" />
-            <label htmlFor="Agotado">Agotado</label>
+            <div className="new-product-input-container">
+              <input type="checkbox" name="noStock" id="Agotado" />
+              <label htmlFor="Agotado">Agotado</label>
+            </div>
 
-            <input type="checkbox" name="topOrder" id="Top pedidos" />
-            <label htmlFor="Top pedidos">Top pedidos</label>
+            <div className="new-product-input-container">
+              <input type="checkbox" name="topOrder" id="Top pedidos" />
+              <label htmlFor="Top pedidos">Top pedidos</label>
+            </div>
           </div>
           <div>
             <button type="submit">Agregar</button>
