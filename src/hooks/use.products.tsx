@@ -4,6 +4,7 @@ import { ApiRepoProducts } from '../repo/api.repo.products';
 import {
   addNewProductThunk,
   deleteProductThunk,
+  getByCategoryThunk,
   loadOneProductThunk,
   loadProductsThunk,
   updateCurrentProductThunk,
@@ -38,11 +39,16 @@ export function useProducts() {
     );
   };
 
+  const getByCategory = (category: string) => {
+    dispatch(getByCategoryThunk({ repo: productsRepo, category: category }));
+  };
+
   return {
     loadAllProducts,
     loadOneProduct,
     deleteProduct,
     addNewProduct,
     updateCurrentProduct,
+    getByCategory,
   };
 }

@@ -61,4 +61,15 @@ describe('Given useUsers hook', () => {
       expect(dispatch).toHaveBeenCalled();
     });
   });
+
+  describe('when we execute getByCategory', () => {
+    test('then dispatch should be called ', () => {
+      const { result } = renderHook(() => useProducts());
+      const { getByCategory } = result.current;
+
+      getByCategory('');
+
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
 });
