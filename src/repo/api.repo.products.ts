@@ -58,4 +58,17 @@ export class ApiRepoProducts {
 
     return apiResponse.json();
   }
+
+  async getProductByCategory(category: string): Promise<Product[]> {
+    const finalUrl = `${this.apiUrl}/admin/category/${category}`;
+
+    const apiResponse = await fetch(finalUrl, {
+      method: 'GET',
+    });
+
+    if (!apiResponse.ok)
+      throw new Error(apiResponse.status + ' ' + apiResponse.statusText);
+
+    return apiResponse.json();
+  }
 }

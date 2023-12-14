@@ -41,6 +41,12 @@ describe('Given ApiRepoProducts', () => {
       expect(jsonMock).toHaveBeenCalled();
       expect(result).toStrictEqual({});
     });
+
+    test('Then the method getProductByCategory should be used', async () => {
+      const result = await repo.getProductByCategory('');
+      expect(jsonMock).toHaveBeenCalled();
+      expect(result).toStrictEqual({});
+    });
   });
 
   describe('When we instantiate it and response is not ok', () => {
@@ -75,6 +81,10 @@ describe('Given ApiRepoProducts', () => {
 
     test('Then the method getProductById should throw an error', async () => {
       await expect(repo.getProductById('')).rejects.toThrow();
+    });
+
+    test('Then the method getProductByCategory should throw an error', async () => {
+      await expect(repo.getProductByCategory('')).rejects.toThrow();
     });
   });
 });
