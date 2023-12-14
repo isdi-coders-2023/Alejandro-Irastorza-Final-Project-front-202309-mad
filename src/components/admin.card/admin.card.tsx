@@ -9,8 +9,8 @@ type Params = {
 export function AdminCard({ product }: Params) {
   const { deleteProduct } = useProducts();
 
-  const handleDeleteProduct = (id: string) => {
-    deleteProduct(id);
+  const handleDeleteProduct = () => {
+    deleteProduct(product.id);
   };
 
   return (
@@ -24,10 +24,7 @@ export function AdminCard({ product }: Params) {
         <p className="admin-card-edit-item">
           <Link to={'/admin/edit-product/' + product.id}>Editar</Link>
         </p>
-        <p
-          className="admin-card-delete-item"
-          onClick={() => handleDeleteProduct(product.id)}
-        >
+        <p className="admin-card-delete-item" onClick={handleDeleteProduct}>
           Eliminar
         </p>
       </div>
