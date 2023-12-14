@@ -5,7 +5,7 @@ type Props = {
 };
 export function Header({ title }: Props) {
   return (
-    <header>
+    <header className="header">
       <div className="header-logo-container">
         <img className="header-logo" src="/alien-bar-isotipe.png" alt="" />
       </div>
