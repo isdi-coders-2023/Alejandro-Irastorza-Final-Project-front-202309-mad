@@ -4,6 +4,7 @@ import { store } from '../../store/store';
 import {
   addNewProductThunk,
   deleteProductThunk,
+  getByCategoryThunk,
   loadOneProductThunk,
   loadProductsThunk,
   updateCurrentProductThunk,
@@ -17,6 +18,7 @@ describe('Given loadProductsThunk', () => {
       deleteProduct: jest.fn().mockReturnValue([] as Product[]),
       createProduct: jest.fn().mockReturnValue({} as Product),
       updateProduct: jest.fn().mockReturnValue({} as Product),
+      getProductByCategory: jest.fn().mockReturnValue({} as Product),
     } as unknown as ApiRepoProducts;
 
     test('Then it should dispatch', async () => {
@@ -50,6 +52,16 @@ describe('Given loadProductsThunk', () => {
         })
       );
       expect(mockedRepo.updateProduct).toHaveBeenCalled();
+    });
+
+    test('Then it should dispatch', async () => {
+      await store.dispatch(
+        getByCategoryThunk({
+          repo: mockedRepo,
+          category: 'Test',
+        })
+      );
+      expect(mockedRepo.getProductByCategory).toHaveBeenCalled();
     });
   });
 

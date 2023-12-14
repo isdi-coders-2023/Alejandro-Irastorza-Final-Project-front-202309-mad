@@ -41,3 +41,11 @@ export const updateCurrentProductThunk = createAsyncThunk<
   const updateProduct = await repo.updateProduct(id, productToUpdate);
   return updateProduct;
 });
+
+export const getByCategoryThunk = createAsyncThunk<
+  Product[],
+  { repo: ApiRepoProducts; category: string }
+>('product/getCategory', async ({ repo, category }) => {
+  const getProductsByCategory = await repo.getProductByCategory(category);
+  return getProductsByCategory;
+});
