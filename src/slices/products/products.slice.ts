@@ -5,13 +5,15 @@ import {
   deleteProductThunk,
   loadOneProductThunk,
   loadProductsThunk,
+  updateCurrentProductThunk,
 } from './products.thunk';
 
 export type ProductsState = {
   currentProduct: Product | null;
-  products: Product[];
+  products: Product[] | null;
   productState: 'idle' | 'loading' | 'loaded' | 'error';
-  productDeleteState: 'idle' | 'loading';
+  productUpdateState: 'idle' | 'loading';
+  productsOneloadState: 'idle' | 'loading' | 'error';
   productFilter:
     | 'Todos los productos'
     | 'Litros 1.0'
@@ -22,9 +24,10 @@ export type ProductsState = {
 
 const initialState: ProductsState = {
   currentProduct: null,
-  products: [],
+  products: null,
   productState: 'idle',
-  productDeleteState: 'idle',
+  productUpdateState: 'idle',
+  productsOneloadState: 'idle',
   productFilter: 'Todos los productos',
 };
 
@@ -33,11 +36,6 @@ export const productsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(loadProductsThunk.pending, (state: ProductsState) => {
-      state.productState = 'loading';
-      return state;
-    });
-
     builder.addCase(
       loadProductsThunk.fulfilled,
       (state: ProductsState, { payload }: PayloadAction<Product[]>) => {
@@ -52,15 +50,10 @@ export const productsSlice = createSlice({
       return state;
     });
 
-    builder.addCase(loadOneProductThunk.pending, (state: ProductsState) => {
-      state.productState = 'loading';
-      return state;
-    });
-
     builder.addCase(
       loadOneProductThunk.fulfilled,
       (state: ProductsState, { payload }: PayloadAction<Product>) => {
-        state.productState = 'loaded';
+        state.productsOneloadState = 'idle';
         state.currentProduct = payload;
         return state;
       }
@@ -72,16 +65,23 @@ export const productsSlice = createSlice({
     });
 
     builder.addCase(deleteProductThunk.fulfilled, (state: ProductsState) => {
-      state.productDeleteState = 'idle';
+      state.productState = 'idle';
     });
 
     builder.addCase(deleteProductThunk.pending, (state: ProductsState) => {
-      state.productDeleteState = 'loading';
+      state.productState = 'loading';
     });
 
     builder.addCase(addNewProductThunk.fulfilled, (state: ProductsState) => {
       console.log('product added', state.products);
     });
+
+    builder.addCase(
+      updateCurrentProductThunk.fulfilled,
+      (state: ProductsState) => {
+        state.productUpdateState = 'idle';
+      }
+    );
   },
 });
 
