@@ -3,6 +3,7 @@ import { Product } from '../../entities/product';
 import {
   addNewProductThunk,
   deleteProductThunk,
+  getByCategoryThunk,
   loadOneProductThunk,
   loadProductsThunk,
   updateCurrentProductThunk,
@@ -41,6 +42,15 @@ export const productsSlice = createSlice({
       (state: ProductsState, { payload }: PayloadAction<Product[]>) => {
         state.productState = 'loaded';
         state.products = payload;
+        return state;
+      }
+    );
+
+    builder.addCase(
+      getByCategoryThunk.fulfilled,
+      (state: ProductsState, { payload }: PayloadAction<Product[]>) => {
+        state.products = payload;
+        state.productState = 'loaded';
         return state;
       }
     );
