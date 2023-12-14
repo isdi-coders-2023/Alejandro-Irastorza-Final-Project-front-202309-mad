@@ -7,20 +7,43 @@ import { store } from '../../store/store';
 import { Product } from '../../entities/product';
 
 describe('Given MenuCard component', () => {
-  render(
-    <Router>
-      <Provider store={store}>
-        <MenuSection
-          category="Test"
-          headingDescription="Test"
-          products={[] as Product[]}
-        ></MenuSection>
-      </Provider>
-    </Router>
-  );
+  describe('when we add a product and category in params', () => {
+    test('Then it should render', async () => {
+      render(
+        <Router>
+          <Provider store={store}>
+            <MenuSection
+              category="Test"
+              products={[
+                {
+                  category: 'Test',
+                  noStock: false,
+                  id: '123',
+                  modelImg: { url: 'url.test.com' },
+                } as Product,
+              ]}
+            ></MenuSection>
+          </Provider>
+        </Router>
+      );
 
-  test('Then it should render', async () => {
-    const componentTitle = screen.getAllByRole('heading')[0];
-    expect(componentTitle).toBeInTheDocument();
+      const componentTitle = screen.getAllByRole('heading')[0];
+      expect(componentTitle).toBeInTheDocument();
+    });
+  });
+
+  describe('when we do not add a category same as object in params', () => {
+    test('Then it should render', async () => {
+      render(
+        <Router>
+          <Provider store={store}>
+            <MenuSection category="Other" products={null}></MenuSection>
+          </Provider>
+        </Router>
+      );
+
+      const feedbackMessage = screen.getByRole('listitem');
+      expect(feedbackMessage).toBeInTheDocument();
+    });
   });
 });

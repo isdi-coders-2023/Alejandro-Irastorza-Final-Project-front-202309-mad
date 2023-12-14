@@ -1,36 +1,41 @@
 import { MenuCard } from '../menu.card/menu.card';
 import { Product } from '../../entities/product';
+import './menu.section.style.scss';
 
 type Props = {
   category: string;
-  headingDescription: string;
+  headingDescription?: string;
   products: Product[] | null;
 };
 export function MenuSection({
-  category = 'Untitled',
+  category,
   headingDescription = 'No description added.',
   products,
 }: Props) {
   let productsByCategory;
   if (products) {
     productsByCategory = products.filter(
-      (product) => product.category === category
+      (product) => product.category === category && !product.noStock
     );
   }
 
   console.log('productsByCategory ', productsByCategory);
 
   return (
-    <div>
-      <h2>{category}</h2>
-      <h3>{headingDescription}</h3>
-      {productsByCategory ? (
-        productsByCategory.map((product) => (
-          <MenuCard key={product.id} product={product}></MenuCard>
-        ))
-      ) : (
-        <p>No products</p>
-      )}
+    <div className="menu-section-container">
+      <div className="menu-section-info">
+        <h2 className="menu-section-category">{category}</h2>
+        <h3 className="menu-section-description">{headingDescription}</h3>
+      </div>
+      <ul className="menu-section-card-container">
+        {productsByCategory ? (
+          productsByCategory.map((product) => (
+            <MenuCard key={product.id} product={product}></MenuCard>
+          ))
+        ) : (
+          <li>No products</li>
+        )}
+      </ul>
     </div>
   );
 }
