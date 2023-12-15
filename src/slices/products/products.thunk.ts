@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Product } from '../../entities/product';
 import { ApiRepoProducts } from '../../repo/api.repo.products';
+import { User } from '../../entities/user';
 
 export const loadProductsThunk = createAsyncThunk<Product[], ApiRepoProducts>(
   'products/load',
@@ -28,9 +29,9 @@ export const deleteProductThunk = createAsyncThunk<
 
 export const addNewProductThunk = createAsyncThunk<
   Product,
-  { repo: ApiRepoProducts; productToAdd: FormData }
->('product/add', async ({ repo, productToAdd }) => {
-  const addProduct = await repo.createProduct(productToAdd);
+  { repo: ApiRepoProducts; productToAdd: FormData; id: User['id'] }
+>('product/add', async ({ repo, productToAdd, id }) => {
+  const addProduct = await repo.createProduct(productToAdd, id);
   return addProduct;
 });
 

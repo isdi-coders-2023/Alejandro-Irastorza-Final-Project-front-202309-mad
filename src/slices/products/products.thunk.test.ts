@@ -1,4 +1,5 @@
 import { Product } from '../../entities/product';
+import { User } from '../../entities/user';
 import { ApiRepoProducts } from '../../repo/api.repo.products';
 import { store } from '../../store/store';
 import {
@@ -38,7 +39,11 @@ describe('Given loadProductsThunk', () => {
 
     test('Then it should dispatch', async () => {
       await store.dispatch(
-        addNewProductThunk({ repo: mockedRepo, productToAdd: {} as FormData })
+        addNewProductThunk({
+          repo: mockedRepo,
+          productToAdd: {} as FormData,
+          id: '' as User['id'],
+        })
       );
       expect(mockedRepo.createProduct).toHaveBeenCalled();
     });
