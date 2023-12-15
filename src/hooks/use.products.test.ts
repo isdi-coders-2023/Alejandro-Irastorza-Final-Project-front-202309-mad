@@ -1,6 +1,7 @@
 import { useProducts } from './use.products';
 import { renderHook } from '@testing-library/react';
 import { useDispatch } from 'react-redux';
+import { User } from '../entities/user';
 
 jest.mock('react-redux', () => ({
   useDispatch: jest.fn(),
@@ -45,7 +46,7 @@ describe('Given useUsers hook', () => {
       const { result } = renderHook(() => useProducts());
       const { addNewProduct } = result.current;
 
-      addNewProduct({} as FormData);
+      addNewProduct({} as FormData, '' as User['id']);
 
       expect(dispatch).toHaveBeenCalled();
     });

@@ -9,6 +9,7 @@ import {
   loadProductsThunk,
   updateCurrentProductThunk,
 } from '../slices/products/products.thunk';
+import { User } from '../entities/user';
 
 export function useProducts() {
   const dispatch = useDispatch<AppDispatch>();
@@ -27,9 +28,13 @@ export function useProducts() {
     dispatch(deleteProductThunk({ repo: productsRepo, id: id }));
   };
 
-  const addNewProduct = (newProduct: FormData) => {
+  const addNewProduct = (newProduct: FormData, userId: User['id']) => {
     dispatch(
-      addNewProductThunk({ repo: productsRepo, productToAdd: newProduct })
+      addNewProductThunk({
+        repo: productsRepo,
+        productToAdd: newProduct,
+        id: userId,
+      })
     );
   };
 
