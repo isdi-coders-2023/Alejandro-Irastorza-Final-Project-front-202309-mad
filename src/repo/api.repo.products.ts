@@ -1,10 +1,14 @@
 import { Product } from '../entities/product';
+import { User } from '../entities/user';
 
 export class ApiRepoProducts {
   apiUrl = 'http://localhost:2800/products';
 
-  async createProduct(newProduct: FormData): Promise<Product> {
-    const finalUrl = `${this.apiUrl}/admin/add`;
+  async createProduct(
+    newProduct: FormData,
+    userId: User['id']
+  ): Promise<Product> {
+    const finalUrl = `${this.apiUrl}/admin/add/` + userId;
     const apiResponse = await fetch(finalUrl, {
       method: 'POST',
       body: newProduct,

@@ -1,3 +1,4 @@
+import { User } from '../entities/user.js';
 import { ApiRepoProducts } from './api.repo.products.js';
 
 describe('Given ApiRepoProducts', () => {
@@ -14,7 +15,7 @@ describe('Given ApiRepoProducts', () => {
     const repo = new ApiRepoProducts();
 
     test('Then the method createProduct should be used', async () => {
-      const result = await repo.createProduct({} as FormData);
+      const result = await repo.createProduct({} as FormData, '' as User['id']);
       expect(jsonMock).toHaveBeenCalled();
       expect(result).toStrictEqual({});
     });
@@ -64,7 +65,9 @@ describe('Given ApiRepoProducts', () => {
     const repo = new ApiRepoProducts();
 
     test('Then the method createProduct should throw an error', async () => {
-      await expect(repo.createProduct({} as FormData)).rejects.toThrow();
+      await expect(
+        repo.createProduct({} as FormData, '' as User['id'])
+      ).rejects.toThrow();
     });
 
     test('Then the method updateProduct should throw an error', async () => {
