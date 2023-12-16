@@ -15,6 +15,7 @@ export type ProductsState = {
   productState: 'idle' | 'loading' | 'loaded' | 'error';
   productUpdateState: 'idle' | 'loading';
   productsOneloadState: 'idle' | 'loading' | 'error';
+  popUpState: true | false;
   productFilter:
     | 'Todos los productos'
     | 'Litros 1.0'
@@ -30,12 +31,22 @@ const initialState: ProductsState = {
   productUpdateState: 'idle',
   productsOneloadState: 'idle',
   productFilter: 'Todos los productos',
+  popUpState: true,
 };
 
 export const productsSlice = createSlice({
   name: 'product',
   initialState,
-  reducers: {},
+  reducers: {
+    setOffPopUp: (state: ProductsState) => {
+      state.popUpState = false;
+      return state;
+    },
+
+    setOnPopUp: (state: ProductsState) => {
+      state.popUpState = true;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(
       loadProductsThunk.fulfilled,
@@ -96,3 +107,4 @@ export const productsSlice = createSlice({
 });
 
 export default productsSlice.reducer;
+export const { setOffPopUp, setOnPopUp } = productsSlice.actions;
