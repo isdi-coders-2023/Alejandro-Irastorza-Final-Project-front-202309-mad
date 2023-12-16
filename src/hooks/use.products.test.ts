@@ -73,4 +73,26 @@ describe('Given useUsers hook', () => {
       expect(dispatch).toHaveBeenCalled();
     });
   });
+
+  describe('when we execute closeProductPopUp', () => {
+    test('then dispatch should be called ', () => {
+      const { result } = renderHook(() => useProducts());
+      const { closeProductPopUp } = result.current;
+
+      closeProductPopUp();
+
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+
+  describe('when we execute openProductPopUp', () => {
+    test('then dispatch should be called ', () => {
+      const { result } = renderHook(() => useProducts());
+      const { openProductPopUp } = result.current;
+
+      openProductPopUp();
+
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
 });
