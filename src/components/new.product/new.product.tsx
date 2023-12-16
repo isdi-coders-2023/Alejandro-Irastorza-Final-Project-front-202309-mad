@@ -35,13 +35,13 @@ export function ProductForm({
       <form aria-label="form" onSubmit={handleSubmit}>
         <h2 className="new-product-title">{title}</h2>
 
-        <div>
+        <div className="new-product-form-container">
           <div className="new-product-name-input input-style">
             <p>Nombre del producto</p>
             <input type="text" name="name" />
           </div>
-          <div>
-            <div>
+          <div className="new-product-flex-container">
+            <div className="new-product-category-input input-style">
               <p>Categoría</p>
               <select name="category">
                 <option value={'Litros 1.0'}>Litros 1.0</option>
@@ -49,16 +49,21 @@ export function ProductForm({
                 <option value={'Sueritos'}>Sueritos</option>
               </select>
             </div>
-            <div className="input-style">
+            <div className="new-product-price input-style">
               <p>Precio (MXN)</p>
               <input type="number" name="price" />
             </div>
           </div>
-          <div className="input-style">
+          <div className="new-product-description input-style">
             <p>Descripcción</p>
             <input className="large-input" type="text" name="description" />
           </div>
-          <input type="file" name="modelImg" />
+          <input
+            className="new-product-image-upload"
+            placeholder="Añadir modelo"
+            type="file"
+            name="modelImg"
+          />
           <div className="new-product-checkbox-list-container">
             <div className="new-product-input-container">
               <input
@@ -80,7 +85,7 @@ export function ProductForm({
               <label htmlFor="Top pedidos">Top pedidos</label>
             </div>
           </div>
-          <div>
+          <div className="new-product-button-container">
             <button type="submit">Agregar</button>
             <button>
               <Link to={'/admin'}>Cancelar</Link>
@@ -92,10 +97,10 @@ export function ProductForm({
   } else {
     return (
       <form aria-label="form" onSubmit={handleSubmit}>
-        <h2>{title}</h2>
+        <h2 className="new-product-title">{title}</h2>
 
-        <div>
-          <div>
+        <div className="new-product-form-container">
+          <div className="new-product-name-input input-style">
             <p>Nombre del producto</p>
             <input
               type="text"
@@ -104,8 +109,8 @@ export function ProductForm({
               onChange={handleInputChange}
             />
           </div>
-          <div>
-            <div>
+          <div className="new-product-flex-container">
+            <div className="new-product-category-input input-style">
               <p>Categoría</p>
               <select name="category">
                 <option value={'Litros 1.0'}>Litros 1.0</option>
@@ -113,7 +118,7 @@ export function ProductForm({
                 <option value={'Sueritos'}>Sueritos</option>
               </select>
             </div>
-            <div>
+            <div className="new-product-price input-style">
               <p>Precio</p>
               <input
                 type="number"
@@ -123,7 +128,7 @@ export function ProductForm({
               />
             </div>
           </div>
-          <div>
+          <div className="new-product-description input-style">
             <p>Descripcción</p>
             <input
               type="text"
@@ -132,18 +137,28 @@ export function ProductForm({
               onChange={handleInputChange}
             />
           </div>
-          <input type="file" name="modelImg" />
-          <div>
-            <input type="checkbox" name="new" id="Nuevo" />
-            <label htmlFor="Nuevo">Nuevo</label>
+          <input
+            className="new-product-image-upload"
+            type="file"
+            name="modelImg"
+          />
+          <div className="new-product-checkbox-list-container">
+            <div className="new-product-input-container">
+              <input type="checkbox" name="new" id="Nuevo" />
+              <label htmlFor="Nuevo">Nuevo</label>
+            </div>
 
-            <input type="checkbox" name="noStock" id="Agotado" />
-            <label htmlFor="Agotado">Agotado</label>
+            <div className="new-product-input-container">
+              <input type="checkbox" name="noStock" id="Agotado" />
+              <label htmlFor="Agotado">Agotado</label>
+            </div>
 
-            <input type="checkbox" name="topOrder" id="Top pedidos" />
-            <label htmlFor="Top pedidos">Top pedidos</label>
+            <div className="new-product-input-container">
+              <input type="checkbox" name="topOrder" id="Top pedidos" />
+              <label htmlFor="Top pedidos">Top pedidos</label>
+            </div>
           </div>
-          <div>
+          <div className="new-product-button-container">
             <button type="submit">Agregar</button>
             <button>
               <Link to={'/admin'}>Cancelar</Link>

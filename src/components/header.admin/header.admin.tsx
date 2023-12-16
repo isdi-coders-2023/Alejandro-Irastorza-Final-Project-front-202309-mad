@@ -4,7 +4,7 @@ import './header.admin.style.scss';
 type Props = {
   title?: string;
   user: User;
-  handleSelectFn: () => void;
+  handleSelectFn?: () => void;
 };
 export function HeaderAdmin({ title, user, handleSelectFn }: Props) {
   return (
@@ -13,7 +13,7 @@ export function HeaderAdmin({ title, user, handleSelectFn }: Props) {
         <div className="header-admin-logo-container">
           <img
             className="header-admin-logo"
-            src="alien-bar-isotipe.png"
+            src="/alien-bar-isotipe-black.png"
             alt=""
           />
           <p>Admin Pannel</p>
@@ -22,27 +22,28 @@ export function HeaderAdmin({ title, user, handleSelectFn }: Props) {
         <div className="header-admin-user-info-container">
           <img
             className="header-admin-user-profile-picture"
-            src={user ? user.profilePic.url : 'alien-bar-isotipe.png'}
+            src={user ? user.profilePic.url : '/alien-bar-isotipe.png'}
             alt=""
           />
           <p>Cerrar sesión</p>
         </div>
       </div>
-
-      <div className="header-admin-bottom">
-        {title && <h2>{title}</h2>}
-        <select
-          onChange={handleSelectFn}
-          className="header-admin-menu-filter"
-          name="menuFilter"
-          id="filter"
-        >
-          <option>Todos</option>
-          <option>Litros 1.0</option>
-          <option>Litros 2.0</option>
-          <option>Sueritos</option>
-        </select>
-      </div>
+      {title && (
+        <div className="header-admin-bottom">
+          {title && <h2>{title}</h2>}
+          <select
+            onChange={handleSelectFn}
+            className="header-admin-menu-filter"
+            name="menuFilter"
+            id="filter"
+          >
+            <option>Todos</option>
+            <option>Litros 1.0</option>
+            <option>Litros 2.0</option>
+            <option>Sueritos</option>
+          </select>
+        </div>
+      )}
     </header>
   );
 }

@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
+import './error.page.style.scss';
 
 export function ErrorPage() {
   return (
     <>
-      <div>
-        <img src="/alien-bar-isotipe.svg" alt="" />
+      <div className="error-page-container">
+        <img src="/alien-bar-isotipe.png" alt="" />
         <h2>404 Not Found</h2>
         <h3>¡Ups! Parece que la página que buscas acceder, no existe.</h3>
         <button>
@@ -16,6 +17,7 @@ export function ErrorPage() {
           </Link>
         </button>
         <img
+          className="error-page-image"
           src="/apolo.svg"
           alt="Imagen de Apolo el alien con una sudadera negra."
         />
