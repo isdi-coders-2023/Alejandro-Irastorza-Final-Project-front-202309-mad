@@ -6,7 +6,7 @@
   padding-block-start: 12rem;
   background-color: rgba(0, 0, 0, 0.437);
   backdrop-filter: blur(10px);
-  position: absolute;
+  position: fixed;
   overflow-y: unset;
 
   img {
@@ -47,5 +47,13 @@
   }
   to {
     opacity: 0;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .pop-up-container {
+    img {
+      height: 35rem;
+    }
   }
 }

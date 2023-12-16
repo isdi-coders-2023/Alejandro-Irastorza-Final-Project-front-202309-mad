@@ -1,0 +1,19 @@
+.error-page-container {
+  background-color: black;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  img {
+    height: 3rem;
+  }
+
+  .error-page-image {
+    height: 40rem;
+  }
+  h2,
+  h3 {
+    color: aqua;
+  }
+}
