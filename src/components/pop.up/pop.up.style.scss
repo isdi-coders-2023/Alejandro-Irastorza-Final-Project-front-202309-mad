@@ -1,0 +1,51 @@
+.pop-up-container {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding-block-start: 12rem;
+  background-color: rgba(0, 0, 0, 0.437);
+  backdrop-filter: blur(10px);
+  position: absolute;
+  overflow-y: unset;
+
+  img {
+    height: 20rem;
+    border-radius: 20px;
+  }
+  p {
+    position: relative;
+    color: aliceblue;
+    right: 2rem;
+  }
+
+  &.fade-in {
+    animation: fadeIn 0.5s ease-in forwards;
+  }
+
+  &.fade-out {
+    animation: fadeOut 0.5s ease-out forwards;
+  }
+
+  &.no-opacity {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
