@@ -19,9 +19,7 @@ export function AdminPannelMenu() {
   );
 
   if (loginState !== 'logged') {
-    useEffect(() => {
-      navigate('/admin/login');
-    }, []);
+    navigate('/admin/login');
     return;
   }
 
