@@ -2,10 +2,12 @@ import { render, screen } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import '@testing-library/jest-dom';
 import { Provider } from 'react-redux';
-import { store } from '../../store/store';
 import { AdminPannelMenu } from './admin.pannel.menu.page';
 import userEvent from '@testing-library/user-event';
 import { useProducts } from '../../hooks/use.products';
+import configureStore from 'redux-mock-store';
+import { User } from '../../entities/user';
+// import 'react-router-dom';
 
 jest.mock('../../hooks/use.products', () => ({
   useProducts: jest.fn().mockReturnValue({
@@ -14,9 +16,34 @@ jest.mock('../../hooks/use.products', () => ({
   }),
 }));
 
+// jest.mock('react-router-dom', () => {
+//   useNavigate: jest.fn();
+// });
+
+const mockStore = configureStore([]);
+
 describe('Given Header component', () => {
+  let store;
   describe('when we render it', () => {
     beforeEach(() => {
+      const initialState = {
+        users: {
+          loggedUser: { profilePic: { url: '' } } as User,
+          loginState: 'logged',
+          userToken: '',
+        },
+        products: {
+          currentProduct: null,
+          products: null,
+          productState: 'idle',
+          productUpdateState: 'idle',
+          productsOneloadState: 'idle',
+          productFilter: 'Todos los productos',
+          popUpState: true,
+        },
+      };
+
+      store = mockStore(initialState);
       render(
         <Router>
           <Provider store={store}>
@@ -56,4 +83,39 @@ describe('Given Header component', () => {
       expect(useProducts().loadAllProducts).toHaveBeenCalled();
     });
   });
+
+  // describe('When we render it whit logout users state', () => {
+  //   test('Then it should', () => {
+  //     const initialState = {
+  //       users: {
+  //         loggedUser: null,
+  //         loginState: 'logout',
+  //         userToken: '',
+  //       },
+  //       products: {
+  //         currentProduct: null,
+  //         products: null,
+  //         productState: 'idle',
+  //         productUpdateState: 'idle',
+  //         productsOneloadState: 'idle',
+  //         productFilter: 'Todos los productos',
+  //         popUpState: true,
+  //       },
+  //     };
+
+  //     store = mockStore(initialState);
+
+  //     render(
+  //       <Router>
+  //         <Provider store={store}>
+  //           <AdminPannelMenu></AdminPannelMenu>
+  //         </Provider>
+  //       </Router>
+  //     );
+
+  //     const navigate = jest.fn()
+
+  //     expect;
+  //   });
+  // });
 });

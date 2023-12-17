@@ -5,18 +5,27 @@ import { RootState } from '../../store/store';
 import { useProducts } from '../../hooks/use.products';
 import { useEffect } from 'react';
 import { HeaderAdmin } from '../../components/header.admin/header.admin';
+import { useNavigate } from 'react-router-dom';
 
 export function AdminPannelMenu() {
+  const { loggedUser, loginState } = useSelector(
+    (state: RootState) => state.users
+  );
+
+  const navigate = useNavigate();
+
   const { products, productFilter, productState } = useSelector(
     (state: RootState) => state.products
   );
+
+  if (loginState !== 'logged') {
+    navigate('/admin/login');
+  }
 
   const { getByCategory, loadAllProducts } = useProducts();
   useEffect(() => {
     loadAllProducts();
   }, [productState]);
-
-  const { loggedUser } = useSelector((state: RootState) => state.users);
 
   const handleSelect = () => {
     const selectedItem = document.getElementById('filter') as HTMLSelectElement;
