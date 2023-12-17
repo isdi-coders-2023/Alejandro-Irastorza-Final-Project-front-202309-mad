@@ -25,11 +25,11 @@ describe('Login Component', () => {
     const fromElement = screen.getByRole('form');
     const inputElements = screen.getAllByRole('textbox');
     const submitButton = screen.getByRole('button', { name: 'Registrarme' });
-    const showPasswordButton = screen.getByRole('button', { name: 'See' });
+    const showButton = screen.getByRole('button', { name: 'See' });
     await userEvent.type(inputElements[0], 'test');
     await userEvent.type(inputElements[1], 'test');
     await userEvent.click(submitButton);
-    await userEvent.click(showPasswordButton);
+    await userEvent.click(showButton);
     await fireEvent.submit(fromElement);
     expect(useUsers().doRegister).toHaveBeenCalled();
   });
