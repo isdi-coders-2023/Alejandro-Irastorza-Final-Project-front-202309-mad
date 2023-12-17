@@ -12,7 +12,7 @@ jest.mock('../../hooks/use.users', () => ({
   }),
 }));
 
-describe('Given Login Component', () => {
+describe('Given Add Product page', () => {
   beforeEach(() => {
     render(
       <Router>
@@ -23,22 +23,20 @@ describe('Given Login Component', () => {
     );
   });
 
-  describe('If we render form element', () => {
+  describe('when page is rendered and user fill inputs', () => {
     test('Then submit should be called with checkboxes in true', async () => {
-      const firstFormElement = screen.getByRole('form');
-      const submitButtonElement = screen.getAllByRole('button')[0];
-      const checkBoxes = screen.getAllByRole('checkbox');
+      const formElement = screen.getByRole('form');
+      const submitButton = screen.getAllByRole('button')[0];
+      const checkboxes = screen.getAllByRole('checkbox');
 
-      await userEvent.click(checkBoxes[0]);
-      await userEvent.click(checkBoxes[1]);
-      await userEvent.click(checkBoxes[2]);
-      await userEvent.click(submitButtonElement);
-      expect(firstFormElement).toBeInTheDocument();
+      await userEvent.click(checkboxes[0]);
+      await userEvent.click(checkboxes[1]);
+      await userEvent.click(checkboxes[2]);
+      await userEvent.click(submitButton);
+      expect(formElement).toBeInTheDocument();
     });
-  });
 
-  describe('If we render form element', () => {
-    test('Then form should be rendered with checkboxes in true', async () => {
+    test('Then submit should be called with checkboxes in false', async () => {
       const secondFromElement = screen.getByRole('form');
       const secondSubmitButtonElement = screen.getAllByRole('button')[0];
 
