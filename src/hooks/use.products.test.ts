@@ -1,14 +1,22 @@
 import { useProducts } from './use.products';
 import { renderHook } from '@testing-library/react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { User } from '../entities/user';
 
 jest.mock('react-redux', () => ({
   useDispatch: jest.fn(),
+  useSelector: jest.fn(),
 }));
 describe('Given useUsers hook', () => {
   const dispatch = jest.fn();
   (useDispatch as jest.Mock).mockReturnValue(dispatch);
+  (useSelector as jest.Mock).mockImplementation((mockStateSelector) =>
+    mockStateSelector({
+      users: {
+        userToken: '',
+      },
+    })
+  );
   describe('when we execute doLogin', () => {
     test('then dispatch should be called ', () => {
       const { result } = renderHook(() => useProducts());

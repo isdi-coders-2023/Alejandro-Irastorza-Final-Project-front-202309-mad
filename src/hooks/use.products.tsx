@@ -1,5 +1,5 @@
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../store/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../store/store';
 import { ApiRepoProducts } from '../repo/api.repo.products';
 import {
   addNewProductThunk,
@@ -13,6 +13,8 @@ import { User } from '../entities/user';
 import * as ac from '../slices/products/products.slice';
 
 export function useProducts() {
+  const { userToken } = useSelector((state: RootState) => state.users);
+
   const dispatch = useDispatch<AppDispatch>();
 
   const productsRepo = new ApiRepoProducts();
@@ -26,7 +28,9 @@ export function useProducts() {
   };
 
   const deleteProduct = (id: string) => {
-    dispatch(deleteProductThunk({ repo: productsRepo, id: id }));
+    dispatch(
+      deleteProductThunk({ repo: productsRepo, id: id, token: userToken! })
+    );
   };
 
   const addNewProduct = (newProduct: FormData, userId: User['id']) => {
@@ -35,13 +39,19 @@ export function useProducts() {
         repo: productsRepo,
         productToAdd: newProduct,
         id: userId,
+        token: userToken!,
       })
     );
   };
 
   const updateCurrentProduct = (id: string, productToUpdate: FormData) => {
     dispatch(
-      updateCurrentProductThunk({ repo: productsRepo, id, productToUpdate })
+      updateCurrentProductThunk({
+        repo: productsRepo,
+        id: id,
+        productToUpdate: productToUpdate,
+        token: userToken!,
+      })
     );
   };
 
