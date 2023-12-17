@@ -12,18 +12,19 @@ export function AdminPannelMenu() {
     (state: RootState) => state.users
   );
 
-  const navigate = useNavigate();
-
   const { products, productFilter, productState } = useSelector(
     (state: RootState) => state.products
   );
+
+  const { getByCategory, loadAllProducts } = useProducts();
+
+  const navigate = useNavigate();
 
   if (loginState !== 'logged') {
     navigate('/admin/login');
     return;
   }
 
-  const { getByCategory, loadAllProducts } = useProducts();
   useEffect(() => {
     loadAllProducts();
   }, [productState]);
