@@ -12,8 +12,11 @@ export function AppRoutes() {
   return (
     <main>
       <Routes>
-        <Route path="/login" element={<LoginPage></LoginPage>}></Route>
-        <Route path="/register" element={<RegisterPage></RegisterPage>}></Route>
+        <Route path="/admin/login" element={<LoginPage></LoginPage>}></Route>
+        <Route
+          path="/admin/register"
+          element={<RegisterPage></RegisterPage>}
+        ></Route>
         <Route
           path="/admin"
           element={<AdminPannelMenu></AdminPannelMenu>}
