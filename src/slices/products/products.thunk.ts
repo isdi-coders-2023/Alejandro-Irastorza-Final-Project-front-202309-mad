@@ -21,25 +21,35 @@ export const loadOneProductThunk = createAsyncThunk<
 
 export const deleteProductThunk = createAsyncThunk<
   Product,
-  { repo: ApiRepoProducts; id: Product['id'] }
->('product/delete', async ({ repo, id }) => {
-  const deleteProduct = await repo.deleteProduct(id);
+  { repo: ApiRepoProducts; id: Product['id']; token: string }
+>('product/delete', async ({ repo, id, token }) => {
+  const deleteProduct = await repo.deleteProduct(id, token);
   return deleteProduct;
 });
 
 export const addNewProductThunk = createAsyncThunk<
   Product,
-  { repo: ApiRepoProducts; productToAdd: FormData; id: User['id'] }
->('product/add', async ({ repo, productToAdd, id }) => {
-  const addProduct = await repo.createProduct(productToAdd, id);
+  {
+    repo: ApiRepoProducts;
+    productToAdd: FormData;
+    id: User['id'];
+    token: string;
+  }
+>('product/add', async ({ repo, productToAdd, id, token }) => {
+  const addProduct = await repo.createProduct(productToAdd, id, token);
   return addProduct;
 });
 
 export const updateCurrentProductThunk = createAsyncThunk<
   Product,
-  { repo: ApiRepoProducts; id: Product['id']; productToUpdate: FormData }
->('product/update', async ({ repo, id, productToUpdate }) => {
-  const updateProduct = await repo.updateProduct(id, productToUpdate);
+  {
+    repo: ApiRepoProducts;
+    id: Product['id'];
+    productToUpdate: FormData;
+    token: string;
+  }
+>('product/update', async ({ repo, id, productToUpdate, token }) => {
+  const updateProduct = await repo.updateProduct(id, productToUpdate, token);
   return updateProduct;
 });
 

@@ -33,7 +33,9 @@ describe('Given loadProductsThunk', () => {
     });
 
     test('Then it should dispatch', async () => {
-      await store.dispatch(deleteProductThunk({ repo: mockedRepo, id: '' }));
+      await store.dispatch(
+        deleteProductThunk({ repo: mockedRepo, id: '', token: '' })
+      );
       expect(mockedRepo.deleteProduct).toHaveBeenCalled();
     });
 
@@ -43,6 +45,7 @@ describe('Given loadProductsThunk', () => {
           repo: mockedRepo,
           productToAdd: {} as FormData,
           id: '' as User['id'],
+          token: '',
         })
       );
       expect(mockedRepo.createProduct).toHaveBeenCalled();
@@ -54,6 +57,7 @@ describe('Given loadProductsThunk', () => {
           repo: mockedRepo,
           id: '',
           productToUpdate: {} as FormData,
+          token: '',
         })
       );
       expect(mockedRepo.updateProduct).toHaveBeenCalled();
