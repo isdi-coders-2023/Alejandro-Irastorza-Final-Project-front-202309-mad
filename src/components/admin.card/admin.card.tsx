@@ -4,7 +4,7 @@ import { useProducts } from '../../hooks/use.products';
 import './admin.card.style.scss';
 
 type Props = {
-  product: Product;
+  readonly product: Product;
 };
 export function AdminCard({ product }: Props) {
   const { deleteProduct } = useProducts();
@@ -24,7 +24,11 @@ export function AdminCard({ product }: Props) {
         <p className="admin-card-edit-item">
           <Link to={'/admin/edit-product/' + product.id}>Editar</Link>
         </p>
-        <p className="admin-card-delete-item" onClick={handleDeleteProduct}>
+        <p
+          className="admin-card-delete-item"
+          onClick={handleDeleteProduct}
+          role="button"
+        >
           Eliminar
         </p>
       </div>
