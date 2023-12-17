@@ -1,4 +1,5 @@
 import { User } from '../../entities/user';
+import { useUsers } from '../../hooks/use.users';
 import './header.admin.style.scss';
 
 type Props = {
@@ -7,6 +8,10 @@ type Props = {
   handleSelectFn?: () => void;
 };
 export function HeaderAdmin({ title, user, handleSelectFn }: Props) {
+  const { doLogout } = useUsers();
+  const handleLogout = () => {
+    doLogout();
+  };
   return (
     <header className="admin-header">
       <div className="admin-header-top">
@@ -22,10 +27,10 @@ export function HeaderAdmin({ title, user, handleSelectFn }: Props) {
         <div className="header-admin-user-info-container">
           <img
             className="header-admin-user-profile-picture"
-            src={user ? user.profilePic.url : '/alien-bar-isotipe.png'}
+            src={user.profilePic.url}
             alt=""
           />
-          <p>Cerrar sesión</p>
+          <p onClick={handleLogout}>Cerrar sesión</p>
         </div>
       </div>
       {title && (
