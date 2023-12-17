@@ -6,23 +6,34 @@ export class ApiRepoProducts {
 
   async createProduct(
     newProduct: FormData,
-    userId: User['id']
+    userId: User['id'],
+    token: string
   ): Promise<Product> {
     const finalUrl = `${this.apiUrl}/admin/add/` + userId;
     const apiResponse = await fetch(finalUrl, {
       method: 'POST',
       body: newProduct,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     });
     if (!apiResponse.ok)
       throw new Error(apiResponse.status + ' ' + apiResponse.statusText);
     return apiResponse.json();
   }
 
-  async updateProduct(id: string, updatedProduct: FormData): Promise<Product> {
+  async updateProduct(
+    id: string,
+    updatedProduct: FormData,
+    token: string
+  ): Promise<Product> {
     const finalUrl = `${this.apiUrl}/admin/update/${id}`;
     const apiResponse = await fetch(finalUrl, {
       method: 'PATCH',
       body: updatedProduct,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     });
 
     if (!apiResponse.ok)
@@ -30,10 +41,13 @@ export class ApiRepoProducts {
     return apiResponse.json();
   }
 
-  async deleteProduct(id: string): Promise<Product> {
+  async deleteProduct(id: string, token: string): Promise<Product> {
     const finalUrl = `${this.apiUrl}/admin/delete/${id}`;
     const apiResponse = await fetch(finalUrl, {
       method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     });
     if (!apiResponse.ok)
       throw new Error(apiResponse.status + ' ' + apiResponse.statusText);

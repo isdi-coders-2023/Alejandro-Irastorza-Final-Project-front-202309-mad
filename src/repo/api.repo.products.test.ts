@@ -15,19 +15,23 @@ describe('Given ApiRepoProducts', () => {
     const repo = new ApiRepoProducts();
 
     test('Then the method createProduct should be used', async () => {
-      const result = await repo.createProduct({} as FormData, '' as User['id']);
+      const result = await repo.createProduct(
+        {} as FormData,
+        '' as User['id'],
+        ''
+      );
       expect(jsonMock).toHaveBeenCalled();
       expect(result).toStrictEqual({});
     });
 
     test('Then the method updateProduct should be used', async () => {
-      const result = await repo.updateProduct('', {} as FormData);
+      const result = await repo.updateProduct('', {} as FormData, '');
       expect(jsonMock).toHaveBeenCalled();
       expect(result).toStrictEqual({});
     });
 
     test('Then the method deleteProduct should be used', async () => {
-      const result = await repo.deleteProduct('');
+      const result = await repo.deleteProduct('', '');
       expect(result).toStrictEqual({});
     });
 
@@ -66,16 +70,18 @@ describe('Given ApiRepoProducts', () => {
 
     test('Then the method createProduct should throw an error', async () => {
       await expect(
-        repo.createProduct({} as FormData, '' as User['id'])
+        repo.createProduct({} as FormData, '' as User['id'], '')
       ).rejects.toThrow();
     });
 
     test('Then the method updateProduct should throw an error', async () => {
-      await expect(repo.updateProduct('', {} as FormData)).rejects.toThrow();
+      await expect(
+        repo.updateProduct('', {} as FormData, '')
+      ).rejects.toThrow();
     });
 
     test('Then the method deleteProduct should throw an error', async () => {
-      await expect(repo.deleteProduct('')).rejects.toThrow();
+      await expect(repo.deleteProduct('', '')).rejects.toThrow();
     });
 
     test('Then the method getAllProducts should throw an error', async () => {
