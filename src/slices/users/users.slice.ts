@@ -21,6 +21,7 @@ export const usersSlice = createSlice({
   reducers: {
     logout: (state: UsersState) => {
       state.loggedUser = null;
+      state.loginState = 'logout';
     },
   },
   extraReducers: (builder) => {
