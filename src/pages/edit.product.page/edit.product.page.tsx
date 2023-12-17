@@ -23,31 +23,31 @@ export function EditProductPage() {
   const handleSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
 
-    const formElement = event.target as HTMLFormElement;
-    const formData = new FormData(formElement);
-    const newCheckbox = formData.get('new');
-    const noStockCheckbox = formData.get('noStock');
-    const topOrderCheckbox = formData.get('topOrder');
+    const htmlFormElement = event.target as HTMLFormElement;
+    const formDataDeclaration = new FormData(htmlFormElement);
+    const firstNewCheckbox = formDataDeclaration.get('new');
+    const secondNoStockCheckbox = formDataDeclaration.get('noStock');
+    const thirdTopOrderCheckbox = formDataDeclaration.get('topOrder');
 
-    if (newCheckbox === 'on') {
-      formData.set('new', 'true');
+    if (firstNewCheckbox === 'on') {
+      formDataDeclaration.set('new', 'true');
     } else {
-      formData.set('new', 'false');
+      formDataDeclaration.set('new', 'false');
     }
 
-    if (noStockCheckbox === 'on') {
-      formData.set('noStock', 'true');
+    if (secondNoStockCheckbox === 'on') {
+      formDataDeclaration.set('noStock', 'true');
     } else {
-      formData.set('noStock', 'false');
+      formDataDeclaration.set('noStock', 'false');
     }
 
-    if (topOrderCheckbox === 'on') {
-      formData.set('topOrder', 'true');
+    if (thirdTopOrderCheckbox === 'on') {
+      formDataDeclaration.set('topOrder', 'true');
     } else {
-      formData.set('topOrder', 'false');
+      formDataDeclaration.set('topOrder', 'false');
     }
 
-    updateCurrentProduct(id!, formData);
+    updateCurrentProduct(id!, formDataDeclaration);
     console.log(id);
   };
 
