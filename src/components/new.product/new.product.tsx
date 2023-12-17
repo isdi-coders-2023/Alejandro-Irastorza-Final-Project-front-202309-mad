@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Product } from '../../entities/product';
 import './new.product.style.scss';
 
-type Params = {
+type Props = {
   title?: string;
   handleSubmit: (event: SyntheticEvent) => void;
   productToEdit?: Product;
@@ -12,7 +12,7 @@ export function ProductForm({
   title = 'Untitled',
   handleSubmit,
   productToEdit,
-}: Params) {
+}: Props) {
   const [formData, setformData] = useState<Product | undefined>(productToEdit);
 
   useEffect(() => {
