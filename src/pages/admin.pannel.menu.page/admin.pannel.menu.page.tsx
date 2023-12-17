@@ -19,7 +19,10 @@ export function AdminPannelMenu() {
   );
 
   if (loginState !== 'logged') {
-    navigate('/admin/login');
+    useEffect(() => {
+      navigate('/admin/login');
+    }, []);
+    return;
   }
 
   const { getByCategory, loadAllProducts } = useProducts();
