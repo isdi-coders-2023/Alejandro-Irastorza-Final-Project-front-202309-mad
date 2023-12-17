@@ -3,10 +3,10 @@ import { Product } from '../../entities/product';
 import { useProducts } from '../../hooks/use.products';
 import './admin.card.style.scss';
 
-type Params = {
+type Props = {
   product: Product;
 };
-export function AdminCard({ product }: Params) {
+export function AdminCard({ product }: Props) {
   const { deleteProduct } = useProducts();
 
   const handleDeleteProduct = () => {
