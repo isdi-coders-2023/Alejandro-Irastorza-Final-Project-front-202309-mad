@@ -30,7 +30,9 @@ export function HeaderAdmin({ title, user, handleSelectFn }: Props) {
             src={user.profilePic.url}
             alt=""
           />
-          <p onClick={handleLogout}>Cerrar sesión</p>
+          <p onClick={handleLogout} onKeyDown={handleLogout}>
+            Cerrar sesión
+          </p>
         </div>
       </div>
       {title && (
