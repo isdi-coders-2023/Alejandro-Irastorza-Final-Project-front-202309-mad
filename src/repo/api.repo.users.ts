@@ -17,7 +17,6 @@ export class ApiRepoUsers {
     if (!apiResponse.ok) {
       throw new Error(apiResponse.status + ' ' + apiResponse.statusText);
     }
-    console.log('Response from repo', apiResponse.body);
     return apiResponse.json();
   }
 
