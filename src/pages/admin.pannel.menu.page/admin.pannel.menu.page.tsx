@@ -12,22 +12,27 @@ export function AdminPannelMenu() {
     (state: RootState) => state.users
   );
 
-  const { products, productFilter, productState } = useSelector(
-    (state: RootState) => state.products
-  );
+  const { products, productFilter, productState, addProductState } =
+    useSelector((state: RootState) => state.products);
 
   const { getByCategory, loadAllProducts } = useProducts();
 
   const navigate = useNavigate();
 
   if (loginState !== 'logged') {
-    navigate('/admin/login');
+    useEffect(() => {
+      navigate('/admin/login');
+    }, []);
     return;
   }
 
   useEffect(() => {
     loadAllProducts();
   }, [productState]);
+
+  useEffect(() => {
+    loadAllProducts();
+  }, [addProductState]);
 
   const handleSelect = () => {
     const selectedItem = document.getElementById('filter') as HTMLSelectElement;
