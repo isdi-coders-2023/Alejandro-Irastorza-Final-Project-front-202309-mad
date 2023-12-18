@@ -7,7 +7,7 @@ import { MenuPage } from './menu.page';
 import { useProducts } from '../../hooks/use.products';
 import userEvent from '@testing-library/user-event';
 
-jest.mock('../../hooks/use.Products', () => ({
+jest.mock('../../hooks/use.products', () => ({
   useProducts: jest.fn().mockReturnValue({
     loadAllProducts: jest.fn(),
     closeProductPopUp: jest.fn(),
