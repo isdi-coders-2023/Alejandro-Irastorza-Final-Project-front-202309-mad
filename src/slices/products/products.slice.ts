@@ -16,6 +16,7 @@ export type ProductsState = {
   productUpdateState: 'idle' | 'loading';
   productsOneloadState: 'idle' | 'loading' | 'error';
   popUpState: true | false;
+  addProductState: 'idle' | 'loading' | 'error';
   productFilter:
     | 'Todos los productos'
     | 'Litros 1.0'
@@ -30,6 +31,7 @@ const initialState: ProductsState = {
   productState: 'idle',
   productUpdateState: 'idle',
   productsOneloadState: 'idle',
+  addProductState: 'idle',
   productFilter: 'Todos los productos',
   popUpState: true,
 };
@@ -94,7 +96,11 @@ export const productsSlice = createSlice({
     });
 
     builder.addCase(addNewProductThunk.fulfilled, (state: ProductsState) => {
-      console.log('product added', state.products);
+      state.addProductState = 'idle';
+    });
+
+    builder.addCase(addNewProductThunk.pending, (state: ProductsState) => {
+      state.addProductState = 'loading';
     });
 
     builder.addCase(
