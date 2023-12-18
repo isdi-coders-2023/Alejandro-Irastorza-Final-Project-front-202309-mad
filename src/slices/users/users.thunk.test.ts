@@ -19,7 +19,20 @@ describe('Given loginThunk', () => {
     });
     test('Then it should dispatch', async () => {
       await store.dispatch(
-        registerThunk({ repo: mockedRepo, registerUser: {} as Partial<User> })
+        registerThunk({ repo: mockedRepo, registerUser: {} as FormData })
+      );
+      expect(mockedRepo.userLogin).toHaveBeenCalled();
+    });
+  });
+
+  describe('When we dispatch unsuccesfully', () => {
+    const mockedRepo = {
+      userLogin: jest.fn().mockRejectedValue({}),
+    } as unknown as ApiRepoUsers;
+
+    test('Then it should dispatch', async () => {
+      await store.dispatch(
+        loginThunk({ repo: mockedRepo, loginUser: {} as Partial<User> })
       );
       expect(mockedRepo.userLogin).toHaveBeenCalled();
     });

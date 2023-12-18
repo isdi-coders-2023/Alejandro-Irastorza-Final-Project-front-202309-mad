@@ -1,0 +1,129 @@
+.input-style {
+  background-color: #fbfbfb;
+
+  padding-inline: 0.5rem;
+  padding-block: 0.2rem;
+  border-radius: 12px;
+  border-style: solid;
+  border-color: #666666;
+  border-width: 1px;
+  p {
+    margin: 0;
+    color: #666666;
+    font-size: 0.8rem;
+  }
+  input {
+    border-style: none;
+    background-color: #fbfbfb;
+    width: 100%;
+    height: 25px;
+  }
+}
+
+.new-product-title {
+  margin: 0;
+  text-align: center;
+  font-size: 1.7rem;
+  padding-block-start: 4rem;
+  padding-block-end: 4rem;
+}
+
+.checkbox-style {
+  padding: 10rem;
+}
+
+.new-product-checkbox-list-container {
+  border-radius: 12px;
+  border-style: solid;
+  border-color: #666666;
+  border-width: 1px;
+  height: 3.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.new-product-input-container {
+  display: flex;
+  align-items: center;
+  input {
+    height: 1.5rem;
+    width: 1.5rem;
+    border-style: solid;
+    border-radius: 10px;
+  }
+  label {
+    font-size: 0.75rem;
+    color: #666666;
+  }
+}
+
+.large-input {
+  height: 20%;
+}
+
+.new-product-category-input {
+  width: 80%;
+  select {
+    width: 100%;
+    height: 1.5rem;
+    border: 0;
+    background-color: #fbfbfb;
+  }
+}
+
+.new-product-flex-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.new-product-price {
+  height: 20%;
+}
+
+.new-product-description {
+  input {
+    height: 6rem;
+    text-align: left;
+  }
+}
+
+.new-product-image-upload::-webkit-file-upload-button {
+  background-color: #fbfbfb;
+  color: #666666;
+  border-style: solid;
+  border-width: 1px;
+  padding-block: 0.6rem;
+  padding-inline: 1rem;
+  border-radius: 50px;
+}
+
+.new-product-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-inline: 7%;
+}
+
+.new-product-button-container {
+  display: flex;
+  justify-content: space-between;
+  button {
+    background-color: black;
+    color: #fbfbfb;
+    font-size: 0.9rem;
+    padding-block: 0.8rem;
+    padding-inline: 2.3rem;
+    text-decoration: none;
+    a {
+      text-decoration: none;
+      color: #fbfbfb;
+    }
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .new-product-form-container {
+    padding-inline: 28rem;
+  }
+}

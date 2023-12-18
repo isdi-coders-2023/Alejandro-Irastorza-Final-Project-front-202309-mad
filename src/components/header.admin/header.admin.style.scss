@@ -1,0 +1,58 @@
+.admin-header {
+  background-color: #fbfbfb;
+  padding-inline: 1.3rem;
+  padding-block-start: 1rem;
+  padding-block-end: 0.5rem;
+}
+.header-admin-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  .header-admin-logo {
+    width: 2.65rem;
+  }
+
+  p {
+    font-weight: bold;
+  }
+}
+
+.header-admin-user-profile-picture {
+  width: 2.65rem;
+}
+
+.admin-header-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-block-end: 0.7rem;
+}
+
+.header-admin-user-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  p {
+    font-size: 0.6rem;
+    font-weight: bold;
+    margin: 0;
+    margin-block-start: 0.5rem;
+  }
+}
+
+.header-admin-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h2 {
+    margin: 0;
+  }
+}
+
+.header-admin-menu-filter {
+  background-color: transparent;
+  border: 0;
+  font-weight: bold;
+}

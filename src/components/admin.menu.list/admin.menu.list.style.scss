@@ -1,0 +1,47 @@
+.admin-menu-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-menu-list-cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-menu-headding-container {
+  h2 {
+    font-size: 1.7rem;
+  }
+  margin-block-end: 1.5rem;
+  button {
+    background-color: black;
+    padding-inline: 1.4rem;
+    padding-block: 0.8rem;
+    a {
+      color: #f5f5f7;
+      text-decoration: none;
+    }
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .admin-menu-list-cards-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 1152px;
+    align-self: center;
+  }
+  .admin-menu-page-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+}

@@ -31,7 +31,22 @@ describe('Given useUsers hook', () => {
 
       const { doRegister } = result.current;
 
-      doRegister({} as Partial<User>);
+      doRegister({} as FormData);
+
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+
+  describe('when we execute doLogout', () => {
+    test('then dispatch should be called ', () => {
+      const dispatch = jest.fn();
+      (useDispatch as jest.Mock).mockReturnValue(dispatch);
+
+      const { result } = renderHook(() => useUsers());
+
+      const { doLogout } = result.current;
+
+      doLogout();
 
       expect(dispatch).toHaveBeenCalled();
     });

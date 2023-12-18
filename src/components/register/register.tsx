@@ -1,5 +1,4 @@
 import { SyntheticEvent, useState } from 'react';
-import { User } from '../../entities/user';
 import { useUsers } from '../../hooks/use.users';
 
 export function Register() {
@@ -12,21 +11,14 @@ export function Register() {
 
     const formElement = event.target as HTMLFormElement;
     const formData = new FormData(formElement);
-    const userRegisterData: Partial<User> = {
-      name: formData.get('name')?.toString(),
-      firstSurname: formData.get('firstSurname')?.toString(),
-      secondSurname: formData.get('secondSurname')?.toString(),
-      email: formData.get('email')?.toString(),
-      password: formData.get('password')?.toString(),
-    };
 
-    doRegister(userRegisterData);
-    console.log(userRegisterData);
+    doRegister(formData);
   };
 
   return (
     <form aria-label="form" onSubmit={handleSubmit}>
       <h2>Registro</h2>
+      <input required type="file" name="profilePic"></input>
       <div className="input-container">
         <div>
           <p>Nombre</p>

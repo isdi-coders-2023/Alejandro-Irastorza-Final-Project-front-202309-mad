@@ -16,7 +16,6 @@ export function Login() {
       password: formData.get('password')?.toString(),
     };
     doLogin(userLoginData);
-    console.log(userLoginData);
   };
   return (
     <form aria-label="form" onSubmit={handleSubmit}>
