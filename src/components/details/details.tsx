@@ -14,8 +14,6 @@ export function Details({ products, id }: Params) {
 
   const product = products!.find((item) => item.id === id);
 
-  console.log('From Params: ', id);
-
   return (
     <div className="details-container">
       <div className="details-tags-container">

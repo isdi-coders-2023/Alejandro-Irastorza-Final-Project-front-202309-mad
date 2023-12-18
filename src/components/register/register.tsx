@@ -13,8 +13,6 @@ export function Register() {
     const formData = new FormData(formElement);
 
     doRegister(formData);
-    console.log(formData);
-    console.log(formElement);
   };
 
   return (

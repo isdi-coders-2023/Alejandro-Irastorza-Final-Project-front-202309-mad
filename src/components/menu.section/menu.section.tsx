@@ -19,8 +19,6 @@ export function MenuSection({
     );
   }
 
-  console.log('productsByCategory ', productsByCategory);
-
   return (
     <div className="menu-section-container">
       <div className="menu-section-info">

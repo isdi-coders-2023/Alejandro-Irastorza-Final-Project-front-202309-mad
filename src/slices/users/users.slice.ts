@@ -26,14 +26,12 @@ export const usersSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(loginThunk.pending, (state: UsersState) => {
-      console.log('Loading');
       state.loginState = 'logging';
       state.loggedUser = null;
       state.userToken = null;
       return state;
     });
     builder.addCase(loginThunk.rejected, (state: UsersState) => {
-      console.log('Login rejected', state);
       state.loginState = 'logout';
       state.loggedUser = null;
       state.userToken = null;
@@ -43,17 +41,13 @@ export const usersSlice = createSlice({
     builder.addCase(
       loginThunk.fulfilled,
       (state: UsersState, { payload }: PayloadAction<LoginAnswer>) => {
-        console.log('From loginReducer', payload);
         state.loggedUser = payload.user;
         state.loginState = 'logged';
         state.userToken = payload.token;
-        console.log('state:', state);
         return state;
       }
     );
-    builder.addCase(registerThunk.fulfilled, () => {
-      console.log('Registered');
-    });
+    builder.addCase(registerThunk.fulfilled, () => {});
   },
 });
 
