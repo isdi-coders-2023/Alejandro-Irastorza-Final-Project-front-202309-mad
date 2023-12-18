@@ -12,6 +12,7 @@ export function AppRoutes() {
   return (
     <main>
       <Routes>
+        <Route path="/" element={<MenuPage></MenuPage>}></Route>
         <Route path="/admin/login" element={<LoginPage></LoginPage>}></Route>
         <Route
           path="/admin/register"
