@@ -90,18 +90,15 @@ describe('Given Header component', () => {
     beforeEach(() => {
       const initialState = {
         users: {
-          loggedUser: { profilePic: { url: '' } } as User,
+          loggedUser: null,
           loginState: 'logout',
-          userToken: '',
+          userToken: null,
         },
         products: {
-          currentProduct: null,
           products: null,
-          productState: 'idle',
-          productUpdateState: 'idle',
-          productsOneloadState: 'idle',
-          productFilter: 'Todos los productos',
-          popUpState: true,
+          productState: '',
+          productUpdateState: '',
+          productFilter: '',
         },
       };
 
