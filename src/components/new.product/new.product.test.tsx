@@ -5,13 +5,10 @@ import { Provider } from 'react-redux';
 import { store } from '../../store/store';
 import { ProductForm } from './new.product';
 import userEvent from '@testing-library/user-event';
-import { SyntheticEvent } from 'react';
 import { Product } from '../../entities/product';
 
 describe('Given the ProductForm component', () => {
-  const mockedHandleSubmit = (event: SyntheticEvent) => {
-    console.log(event);
-  };
+  const mockedHandleSubmit = jest.fn();
   render(
     <Router>
       <Provider store={store}>
