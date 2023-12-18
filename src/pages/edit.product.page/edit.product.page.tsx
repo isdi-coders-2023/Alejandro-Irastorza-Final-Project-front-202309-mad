@@ -1,6 +1,6 @@
 import { SyntheticEvent, useEffect } from 'react';
 import { ProductForm } from '../../components/new.product/new.product';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { useProducts } from '../../hooks/use.products';
@@ -15,6 +15,8 @@ export function EditProductPage() {
   const { id } = useParams();
 
   const { loadOneProduct, updateCurrentProduct } = useProducts();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     loadOneProduct(id!);
@@ -48,10 +50,8 @@ export function EditProductPage() {
     }
 
     updateCurrentProduct(id!, formDataDeclaration);
-    console.log(id);
+    navigate('/admin');
   };
-
-  console.log('hola', currentProduct);
 
   return (
     <div className="edit-product-page-master-container">
