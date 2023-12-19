@@ -1,6 +1,7 @@
 import { SyntheticEvent, useState } from 'react';
 import { User } from '../../entities/user';
 import { useUsers } from '../../hooks/use.users';
+import './login.style.scss';
 
 export function Login() {
   const { doLogin } = useUsers();
@@ -18,29 +19,36 @@ export function Login() {
     doLogin(userLoginData);
   };
   return (
-    <form aria-label="form" onSubmit={handleSubmit}>
-      <h2>Inicia sesión</h2>
+    <form className="login-form" aria-label="form" onSubmit={handleSubmit}>
+      <h2 className="login-title">Inicia sesión</h2>
       <div className="input-container">
-        <div>
+        <div className="input-style">
           <p>Correo electrónico</p>
           <input required type="email" name="email" />
         </div>
-        <div>
+        <div className="input-style input-password">
           <p>Contraseña</p>
-          <input type={showPassword ? 'text' : 'password'} name="password" />
-          <button
-            name="see-button"
-            type="button"
-            onClick={() => {
-              setShowPassword(!showPassword);
-            }}
-            data-testid="see-button"
-          >
-            See
-          </button>
+          <div className="login-password">
+            <input type={showPassword ? 'text' : 'password'} name="password" />
+            <button
+              name="see-button"
+              type="button"
+              onClick={() => {
+                setShowPassword(!showPassword);
+              }}
+              data-testid="see-button"
+            >
+              Hide
+            </button>
+          </div>
         </div>
       </div>
-      <button name="submit-button" type="submit">
+
+      <button
+        className="login-submit-button"
+        name="submit-button"
+        type="submit"
+      >
         Iniciar sesión
       </button>
     </form>
