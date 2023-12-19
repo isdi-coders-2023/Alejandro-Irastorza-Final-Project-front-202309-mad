@@ -20,6 +20,17 @@
     color: #fbfbfb;
     margin: 0;
   }
+
+  p {
+    color: #1a1a1a;
+    font-size: 11px;
+    margin: 0;
+    background-color: #dfdfdf;
+    padding-block: 4px;
+    padding-inline: 7px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
 }
 
 .admin-card-footer-container {
@@ -39,4 +50,16 @@
 
 .admin-card-delete-item {
   color: #bb0000;
+}
+
+@media screen and (min-width: 480px) {
+  .img-hover-zoom--colorize {
+    transition: transform 0.5s, filter 1s ease-in-out;
+    filter: grayscale(100%);
+  }
+
+  .img-hover-zoom--colorize:hover {
+    filter: grayscale(0);
+    transform: scale(1.1);
+  }
 }

@@ -1,5 +1,7 @@
 .menu-section-container {
-  margin-bottom: 3.7rem;
+  margin-bottom: 5rem;
+  height: 437px;
+  width: 100%;
 
   .menu-section-category {
     font-weight: bold;
@@ -40,4 +42,17 @@
 
 .menu-page-container {
   background-color: black;
+}
+
+@media screen and (min-width: 480px) {
+  .menu-section-container {
+    margin-bottom: 5rem;
+    height: auto;
+    width: 100%;
+  }
+  .menu-section-card-container {
+    flex-wrap: wrap;
+    overflow: auto;
+    padding-inline: 2%;
+  }
 }
