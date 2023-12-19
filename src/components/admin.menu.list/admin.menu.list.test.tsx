@@ -25,6 +25,7 @@ describe('Given AdminCard component', () => {
                   id: '123',
                   name: 'Sample',
                   modelImg: { url: 'Sample url' },
+                  creator: { name: '' },
                 } as Product,
               ]}
             ></AdminMenu>
