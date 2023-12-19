@@ -16,8 +16,15 @@ export function AdminCard({ product }: Props) {
   return (
     <li className="admin-card-container">
       <div className="admin-card-inner-container">
+        {product.noStock && <p className="hide-tag">Oculto</p>}
+
         <h3>{product.name.toUpperCase()}</h3>
-        <img src={product.modelImg.url} alt="" />
+        <img
+          className="img-hover-zoom--colorize "
+          src={product.modelImg.url}
+          alt=""
+        />
+        <p>Creado por: {product.creator.name}</p>
       </div>
 
       <div className="admin-card-footer-container">
