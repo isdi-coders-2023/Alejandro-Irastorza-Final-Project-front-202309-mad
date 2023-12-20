@@ -8,7 +8,7 @@ import { Product } from '../../entities/product';
 
 describe('Given MenuCard component', () => {
   describe('when we add a product array with stock diffetence', () => {
-    test('Then it should render', async () => {
+    test('Then it should render a list item', async () => {
       render(
         <Router>
           <Provider store={store}>
@@ -75,7 +75,7 @@ describe('Given MenuCard component', () => {
   });
 
   describe('when we do not add a category same as object in params', () => {
-    test('Then it should render', async () => {
+    test('Then it should render a list item', async () => {
       render(
         <Router>
           <Provider store={store}>

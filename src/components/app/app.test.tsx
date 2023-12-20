@@ -13,8 +13,12 @@ render(
   </Router>
 );
 
-test('should ', () => {
-  const main = screen.getByRole('main');
+describe('Given app component', () => {
+  describe('when we render it', () => {
+    test('then it should be a main tag in the document', () => {
+      const main = screen.getByRole('main');
 
-  expect(main).toBeInTheDocument();
+      expect(main).toBeInTheDocument();
+    });
+  });
 });

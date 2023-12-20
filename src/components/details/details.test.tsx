@@ -8,7 +8,7 @@ import { store } from '../../store/store';
 
 describe('Given AdminCard component', () => {
   describe('when the component recieve an array', () => {
-    test('Then it should render', async () => {
+    test('Then it should render an image', async () => {
       render(
         <Router>
           <Provider store={store}>

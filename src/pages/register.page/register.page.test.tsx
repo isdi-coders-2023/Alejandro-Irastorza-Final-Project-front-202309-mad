@@ -11,17 +11,19 @@ jest.mock('../../hooks/use.users', () => ({
   }),
 }));
 
-describe('Login Component', () => {
-  render(
-    <Router>
-      <Provider store={store}>
-        <RegisterPage></RegisterPage>
-      </Provider>
-    </Router>
-  );
-  test('Then it submits form with correct values', async () => {
-    const fromElement = screen.getByRole('form');
+describe('Given Register Page', () => {
+  describe('When we render it', () => {
+    render(
+      <Router>
+        <Provider store={store}>
+          <RegisterPage></RegisterPage>
+        </Provider>
+      </Router>
+    );
+    test('Then it should print a form element', async () => {
+      const fromElement = screen.getByRole('form');
 
-    expect(fromElement).toBeInTheDocument();
+      expect(fromElement).toBeInTheDocument();
+    });
   });
 });
