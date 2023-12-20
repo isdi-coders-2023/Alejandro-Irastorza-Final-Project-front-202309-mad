@@ -7,6 +7,7 @@ import { useProducts } from '../../hooks/use.products';
 import './menu.page.style.scss';
 import { Heading } from '../../components/heading/heading';
 import { PopUp } from '../../components/pop.up/pop.up';
+import { Link } from 'react-router-dom';
 export default function MenuPage() {
   const { products, productState, popUpState } = useSelector(
     (state: RootState) => state.products
@@ -68,6 +69,10 @@ export default function MenuPage() {
           category="Ginebra"
           headingDescription="¿Listo para una dosis de ginebra-lidad?"
         ></MenuSection>
+
+        <p className="admin-button">
+          <Link to={'/admin'}>Admin Pannel</Link>
+        </p>
       </div>
     </div>
   );
