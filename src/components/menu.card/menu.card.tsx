@@ -5,7 +5,16 @@ type Params = {
   product?: Product;
 };
 export function MenuCard({ product }: Params) {
+  let currentUrl;
+  let secureUrl;
+
+  if (product) {
+    currentUrl = product!.modelImg.url.slice(4);
+    secureUrl = 'https' + currentUrl;
+  }
+
   if (!product) return <>Error loading your product.</>;
+
   return (
     <li className="card-container">
       <Link
@@ -27,7 +36,7 @@ export function MenuCard({ product }: Params) {
         <img
           alt={'Bebida llamada: ' + product.name}
           className="card-image img-hover-zoom--colorize"
-          src={product.modelImg.url}
+          src={secureUrl}
           loading="lazy"
         />
       </Link>

@@ -30,7 +30,7 @@ describe('Given MenuCard component', () => {
             <MenuCard
               product={
                 {
-                  modelImg: { url: '' },
+                  modelImg: { url: 'http://www.www.www' },
                   new: true,
                   noStock: true,
                   topOrder: true,
