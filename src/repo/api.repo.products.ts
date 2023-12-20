@@ -2,7 +2,7 @@ import { Product } from '../entities/product';
 import { User } from '../entities/user';
 
 export class ApiRepoProducts {
-  apiUrl = 'http://localhost:2800/products';
+  apiUrl = 'https://alien-bar.onrender.com/products';
 
   async createProduct(
     newProduct: FormData,
