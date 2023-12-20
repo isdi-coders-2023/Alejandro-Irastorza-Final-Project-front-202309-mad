@@ -2,10 +2,14 @@ import { SyntheticEvent, useState } from 'react';
 import { User } from '../../entities/user';
 import { useUsers } from '../../hooks/use.users';
 import './login.style.scss';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
+import Swal from 'sweetalert2';
 
 export function Login() {
   const { doLogin } = useUsers();
   const [showPassword, setShowPassword] = useState(true);
+  const { loginState } = useSelector((state: RootState) => state.users);
 
   const handleSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
@@ -18,6 +22,15 @@ export function Login() {
     };
     doLogin(userLoginData);
   };
+
+  if (loginState === 'rejected') {
+    Swal.fire({
+      title: 'Error',
+      text: 'Tu usuario y contraseña no coinciden',
+      icon: 'error',
+    });
+  }
+
   return (
     <form className="login-form" aria-label="form" onSubmit={handleSubmit}>
       <h2 className="login-title">Inicia sesión</h2>
