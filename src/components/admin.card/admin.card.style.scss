@@ -55,11 +55,9 @@
 @media screen and (min-width: 480px) {
   .img-hover-zoom--colorize {
     transition: transform 0.5s, filter 1s ease-in-out;
-    filter: grayscale(100%);
   }
 
   .img-hover-zoom--colorize:hover {
-    filter: grayscale(0);
     transform: scale(1.1);
   }
 }

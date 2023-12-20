@@ -53,9 +53,13 @@
 
 @media screen and (min-width: 480px) {
   .pop-up-container {
+    padding-block-start: 15vh;
     img {
       height: 35rem;
       width: 35rem;
+    }
+    p {
+      cursor: pointer;
     }
   }
 }

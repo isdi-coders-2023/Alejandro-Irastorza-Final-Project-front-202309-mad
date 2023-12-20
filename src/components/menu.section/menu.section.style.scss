@@ -48,11 +48,24 @@
   .menu-section-container {
     margin-bottom: 5rem;
     height: auto;
-    width: 100%;
+    width: 1200px;
+    padding-inline: 0rem;
+    margin-bottom: 2rem;
+
+    .menu-section-card-container {
+      flex-wrap: wrap;
+      overflow: auto;
+      padding-inline: 0px;
+      padding: 0;
+    }
+    .menu-section-info {
+      padding: 0;
+    }
   }
-  .menu-section-card-container {
-    flex-wrap: wrap;
-    overflow: auto;
-    padding-inline: 2%;
+
+  .body-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
