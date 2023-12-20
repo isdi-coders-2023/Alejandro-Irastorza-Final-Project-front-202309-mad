@@ -2,7 +2,7 @@ import { User } from '../entities/user.js';
 import { LoginAnswer } from '../types/login.answer.js';
 
 export class ApiRepoUsers {
-  apiUrl = 'http://localhost:2800/users';
+  apiUrl = 'https://alien-bar.onrender.com/users';
 
   async userLogin(registeredUser: Partial<User>): Promise<LoginAnswer> {
     // Quiero recibir un email y una passord

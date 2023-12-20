@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import { HeaderAdmin } from '../../components/header.admin/header.admin';
 import { useNavigate } from 'react-router-dom';
 
-export function AdminPannelMenu() {
+export default function AdminPannelMenu() {
   const { loggedUser, loginState } = useSelector(
     (state: RootState) => state.users
   );

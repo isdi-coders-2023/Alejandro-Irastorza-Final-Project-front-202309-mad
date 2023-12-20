@@ -8,4 +8,5 @@ export default {
   moduleNameMapper: {
     '\\.(css|scss)$': 'identity-obj-proxy',
   },
+  coveragePathIgnorePatterns: ['src/components/app.routes/app.routes.tsx'],
 };

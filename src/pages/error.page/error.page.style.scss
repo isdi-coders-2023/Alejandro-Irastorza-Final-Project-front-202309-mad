@@ -1,19 +1,44 @@
 .error-page-container {
   background-color: black;
   display: flex;
-  align-items: center;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  padding-inline: 2rem;
 
   img {
-    height: 3rem;
+    height: 2rem;
   }
 
   .error-page-image {
-    height: 40rem;
+    height: 30rem;
   }
   h2,
   h3 {
-    color: aqua;
+    color: #fbfbfb;
+  }
+
+  .error-page-container-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-block-start: 10rem;
+
+    h2,
+    h3 {
+      text-align: center;
+    }
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .error-page-container {
+    .error-page-container-header {
+      padding-block-start: 3rem;
+    }
+    .error-page-image {
+      height: 40rem;
+    }
   }
 }

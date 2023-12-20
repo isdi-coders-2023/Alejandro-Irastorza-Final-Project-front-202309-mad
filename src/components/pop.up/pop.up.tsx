@@ -14,7 +14,12 @@ export function PopUp({ imgUrl, imgDescription, handleDisplay }: Props) {
       <div
         className={`pop-up-container ${popUpState ? 'fade-in' : 'fade-out'}`}
       >
-        <img className="pop-up-image" src={imgUrl} alt={imgDescription} />
+        <img
+          loading="lazy"
+          className="pop-up-image"
+          src={imgUrl}
+          alt={imgDescription}
+        />
         <p onClick={handleDisplay} onKeyDown={handleDisplay}>
           X
         </p>

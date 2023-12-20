@@ -7,7 +7,7 @@ jest.mock('react-redux', () => ({
   useDispatch: jest.fn(),
 }));
 describe('Given useUsers hook', () => {
-  describe('when we execure doLogin', () => {
+  describe('when we execute doLogin', () => {
     test('then dispatch should be called ', () => {
       const dispatch = jest.fn();
       (useDispatch as jest.Mock).mockReturnValue(dispatch);

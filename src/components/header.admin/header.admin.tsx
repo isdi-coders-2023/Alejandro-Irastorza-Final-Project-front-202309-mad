@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { User } from '../../entities/user';
 import { useUsers } from '../../hooks/use.users';
 import './header.admin.style.scss';
@@ -8,9 +9,11 @@ type Props = {
   handleSelectFn?: () => void;
 };
 export function HeaderAdmin({ title, user, handleSelectFn }: Props) {
+  const navigate = useNavigate();
   const { doLogout } = useUsers();
   const handleLogout = () => {
     doLogout();
+    navigate('/admin/login');
   };
   return (
     <header className="admin-header">
@@ -48,6 +51,10 @@ export function HeaderAdmin({ title, user, handleSelectFn }: Props) {
             <option>Litros 1.0</option>
             <option>Litros 2.0</option>
             <option>Sueritos</option>
+            <option>Cervezas</option>
+            <option>Tequila</option>
+            <option>Brandy</option>
+            <option>Ginebra</option>
           </select>
         </div>
       )}

@@ -47,6 +47,10 @@ export function ProductForm({
                 <option value={'Litros 1.0'}>Litros 1.0</option>
                 <option value={'Litros 2.0'}>Litros 2.0</option>
                 <option value={'Sueritos'}>Sueritos</option>
+                <option value={'Cervezas'}>Cervezas</option>
+                <option value={'Tequila'}>Tequila</option>
+                <option value={'Brandy'}>Brandy</option>
+                <option value={'Ginebra'}>Ginebra</option>
               </select>
             </div>
             <div className="new-product-price input-style">
@@ -113,9 +117,7 @@ export function ProductForm({
             <div className="new-product-category-input input-style">
               <p>Categoría</p>
               <select name="category">
-                <option value={'Litros 1.0'}>Litros 1.0</option>
-                <option value={'Litros 2.0'}>Litros 2.0</option>
-                <option value={'Sueritos'}>Sueritos</option>
+                <option>{productToEdit.category}</option>
               </select>
             </div>
             <div className="new-product-price input-style">

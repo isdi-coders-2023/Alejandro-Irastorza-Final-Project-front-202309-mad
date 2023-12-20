@@ -7,7 +7,7 @@ import { useProducts } from '../../hooks/use.products';
 import './menu.page.style.scss';
 import { Heading } from '../../components/heading/heading';
 import { PopUp } from '../../components/pop.up/pop.up';
-export function MenuPage() {
+export default function MenuPage() {
   const { products, productState, popUpState } = useSelector(
     (state: RootState) => state.products
   );
@@ -29,15 +29,20 @@ export function MenuPage() {
       )}
       <Header title="Menú"></Header>
       <Heading
-        imagePath="https://static.wixstatic.com/media/1c872a_7d560af2df0148749feeff4df090f10d~mv2.jpg/v1/fill/w_1880,h_576,usm_1.20_1.00_0.01/file.jpg"
+        imagePath="https://res.cloudinary.com/drg2lkgg6/image/upload/v1703001381/sueritos_ajkufy.webp"
         imgDescription="Sueritos de Azulito"
       ></Heading>
       <div className="body-container">
         <MenuSection
           products={products}
+          category="Sueritos"
+          headingDescription="Es como un litro, pero pega más...👀"
+        ></MenuSection>
+        {/* <MenuSection
+          products={products}
           category="Litros 1.0"
           headingDescription="Pídelo con o sin alcohol"
-        ></MenuSection>
+        ></MenuSection> */}
         <MenuSection
           products={products}
           category="Litros 2.0"
@@ -45,8 +50,23 @@ export function MenuPage() {
         ></MenuSection>
         <MenuSection
           products={products}
-          category="Sueritos"
-          headingDescription="Es como un litro, pero pega más...👀"
+          category="Cervezas"
+          headingDescription="¿Unas chelas heladas o qué?"
+        ></MenuSection>
+        <MenuSection
+          products={products}
+          category="Tequila"
+          headingDescription="Un tequilazo para avivar el alma."
+        ></MenuSection>
+        <MenuSection
+          products={products}
+          category="Brandy"
+          headingDescription="Deja que el brandy te cuente sus historias."
+        ></MenuSection>
+        <MenuSection
+          products={products}
+          category="Ginebra"
+          headingDescription="¿Listo para una dosis de ginebra-lidad?"
         ></MenuSection>
       </div>
     </div>

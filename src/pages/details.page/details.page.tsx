@@ -5,7 +5,7 @@ import './details.page.style.scss';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 
-export function DetailsPage() {
+export default function DetailsPage() {
   const { id } = useParams();
 
   const { products } = useSelector((state: RootState) => state.products);

@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import '@testing-library/jest-dom';
 import { Provider } from 'react-redux';
 import { store } from '../../store/store';
-import { ErrorPage } from './error.page';
+import ErrorPage from './error.page';
 
 describe('Given Header component', () => {
   render(

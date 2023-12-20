@@ -7,8 +7,8 @@ import { store } from '../../store/store';
 import { Product } from '../../entities/product';
 
 describe('Given MenuCard component', () => {
-  describe('when we add a product and category in params', () => {
-    test('Then it should render', async () => {
+  describe('when we add a product array with stock diffetence', () => {
+    test('Then it should render a list item', async () => {
       render(
         <Router>
           <Provider store={store}>
@@ -20,6 +20,48 @@ describe('Given MenuCard component', () => {
                   noStock: false,
                   id: '123',
                   modelImg: { url: 'url.test.com' },
+                  new: true,
+                  topOrder: true,
+                } as Product,
+                {
+                  category: 'Test',
+                  noStock: false,
+                  id: '123',
+                  modelImg: { url: 'url.test.com' },
+                  new: true,
+                  topOrder: false,
+                } as Product,
+                {
+                  category: 'Test',
+                  noStock: false,
+                  id: '123',
+                  modelImg: { url: 'url.test.com' },
+                  new: false,
+                  topOrder: true,
+                } as Product,
+                {
+                  category: 'Test',
+                  noStock: false,
+                  id: '123',
+                  modelImg: { url: 'url.test.com' },
+                  new: true,
+                  topOrder: false,
+                } as Product,
+                {
+                  category: 'Test',
+                  noStock: false,
+                  id: '123',
+                  modelImg: { url: 'url.test.com' },
+                  new: false,
+                  topOrder: false,
+                } as Product,
+                {
+                  category: 'Test',
+                  noStock: false,
+                  id: '123',
+                  modelImg: { url: 'url.test.com' },
+                  new: false,
+                  topOrder: false,
                 } as Product,
               ]}
             ></MenuSection>
@@ -33,7 +75,7 @@ describe('Given MenuCard component', () => {
   });
 
   describe('when we do not add a category same as object in params', () => {
-    test('Then it should render', async () => {
+    test('Then it should render a list item', async () => {
       render(
         <Router>
           <Provider store={store}>

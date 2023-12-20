@@ -62,3 +62,13 @@
     }
   }
 }
+
+@media screen and (min-width: 480px) {
+  .img-hover-zoom--colorize {
+    transition: transform 0.5s, filter 1s ease-in-out;
+  }
+
+  .img-hover-zoom--colorize:hover {
+    transform: scale(1.1);
+  }
+}

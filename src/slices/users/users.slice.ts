@@ -5,7 +5,7 @@ import { LoginAnswer } from '../../types/login.answer.js';
 
 export type UsersState = {
   loggedUser: User | null;
-  loginState: 'logout' | 'logging' | 'logged';
+  loginState: 'logout' | 'logging' | 'logged' | 'rejected';
   userToken: string | null;
 };
 
@@ -32,7 +32,7 @@ export const usersSlice = createSlice({
       return state;
     });
     builder.addCase(loginThunk.rejected, (state: UsersState) => {
-      state.loginState = 'logout';
+      state.loginState = 'rejected';
       state.loggedUser = null;
       state.userToken = null;
 
