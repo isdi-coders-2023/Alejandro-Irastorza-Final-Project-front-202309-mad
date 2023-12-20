@@ -19,6 +19,8 @@ export function PopUp({ imgUrl, imgDescription, handleDisplay }: Props) {
           className="pop-up-image"
           src={imgUrl}
           alt={imgDescription}
+          height={'320px'}
+          width={'320px'}
         />
         <p onClick={handleDisplay} onKeyDown={handleDisplay}>
           X
