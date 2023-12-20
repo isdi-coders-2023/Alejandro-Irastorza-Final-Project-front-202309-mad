@@ -48,6 +48,10 @@ export function HeaderAdmin({ title, user, handleSelectFn }: Props) {
             <option>Litros 1.0</option>
             <option>Litros 2.0</option>
             <option>Sueritos</option>
+            <option>Cervezas</option>
+            <option>Tequila</option>
+            <option>Brandy</option>
+            <option>Ginebra</option>
           </select>
         </div>
       )}

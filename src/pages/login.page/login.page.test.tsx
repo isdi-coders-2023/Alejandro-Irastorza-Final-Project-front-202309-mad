@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { LoginPage } from './login.page';
+import LoginPage from './login.page';
 import { BrowserRouter as Router } from 'react-router-dom';
 import '@testing-library/jest-dom';
 import { Provider } from 'react-redux';

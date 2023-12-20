@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import '@testing-library/jest-dom';
 import { Provider } from 'react-redux';
-import { AdminPannelMenu } from './admin.pannel.menu.page';
+import AdminPannelMenu from './admin.pannel.menu.page';
 import userEvent from '@testing-library/user-event';
 import { useProducts } from '../../hooks/use.products';
 import configureStore from 'redux-mock-store';

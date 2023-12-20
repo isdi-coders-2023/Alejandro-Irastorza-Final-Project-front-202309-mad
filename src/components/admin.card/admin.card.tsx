@@ -3,6 +3,7 @@ import { Product } from '../../entities/product';
 import { useProducts } from '../../hooks/use.products';
 import './admin.card.style.scss';
 
+import Swal from 'sweetalert2';
 type Props = {
   readonly product: Product;
 };
@@ -10,7 +11,16 @@ export function AdminCard({ product }: Props) {
   const { deleteProduct } = useProducts();
 
   const handleDeleteProduct = () => {
-    deleteProduct(product.id);
+    Swal.fire({
+      title: `¿Quieres eliminar ${product.name}?`,
+      showCancelButton: true,
+      showConfirmButton: true,
+    }).then((userClick) => {
+      if (userClick.isConfirmed === true) {
+        deleteProduct(product.id);
+        Swal.fire('Ha sido eliminado correctamente');
+      }
+    });
   };
 
   return (

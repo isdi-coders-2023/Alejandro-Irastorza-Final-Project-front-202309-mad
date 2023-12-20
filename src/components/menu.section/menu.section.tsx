@@ -25,15 +25,17 @@ export function MenuSection({
         <h2 className="menu-section-category">{category}</h2>
         <h3 className="menu-section-description">{headingDescription}</h3>
       </div>
-      <ul className="menu-section-card-container">
-        {productsByCategory ? (
-          productsByCategory.map((product) => (
-            <MenuCard key={product.id} product={product}></MenuCard>
-          ))
-        ) : (
-          <li>No products</li>
-        )}
-      </ul>
+      <div className="menu-section-container">
+        <ul className="menu-section-card-container">
+          {productsByCategory ? (
+            productsByCategory.map((product) => (
+              <MenuCard key={product.id} product={product}></MenuCard>
+            ))
+          ) : (
+            <li>No products</li>
+          )}
+        </ul>
+      </div>
     </div>
   );
 }

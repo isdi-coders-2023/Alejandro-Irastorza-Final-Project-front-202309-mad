@@ -11,6 +11,7 @@ export function MenuCard({ product }: Params) {
       <Link
         to={'/menu/details/' + product.id}
         style={{ textDecoration: 'none', color: 'inherit' }}
+        rel="preload"
       >
         <div className="card-tags-container">
           {product.new && <p className="card-new-tag">NUEVO</p>}
@@ -23,7 +24,11 @@ export function MenuCard({ product }: Params) {
           <h3>${product.price}</h3>
         </div>
 
-        <img className="card-image" src={product.modelImg.url} />
+        <img
+          className="card-image img-hover-zoom--colorize"
+          src={product.modelImg.url}
+          loading="lazy"
+        />
       </Link>
     </li>
   );

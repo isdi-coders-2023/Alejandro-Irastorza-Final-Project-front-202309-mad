@@ -34,8 +34,8 @@ const initialState = {
 const store = mockedStore(initialState);
 
 describe('Given AdminCard component', () => {
-  describe('when we render it and products is visible', () => {
-    test('Then it should show a card', async () => {
+  describe('when we click delete', () => {
+    test('Then it should show a sweet alert', async () => {
       render(
         <Router>
           <Provider store={store}>
@@ -54,11 +54,15 @@ describe('Given AdminCard component', () => {
       const cardElement = screen.getByRole('heading');
       const deleteButton = screen.getByText('Eliminar');
       await fireEvent.click(deleteButton);
+
+      const sweetAlertConfirmButton = screen.getAllByRole('button')[0];
+      await fireEvent.click(sweetAlertConfirmButton);
+
       expect(cardElement).toBeInTheDocument();
     });
   });
 
-  describe('When we render it and products isnt visible', () => {
+  describe('When product isnt visible', () => {
     test('then it should show a tag', () => {
       render(
         <Router>

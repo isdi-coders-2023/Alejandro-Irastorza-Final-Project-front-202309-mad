@@ -1,12 +1,33 @@
-import { render, screen } from '@testing-library/react';
-import { EditProductPage } from './edit.product.page';
+import { fireEvent, render, screen } from '@testing-library/react';
+import EditProductPage from './edit.product.page';
 import { BrowserRouter as Router } from 'react-router-dom';
 import '@testing-library/jest-dom';
 import { Provider } from 'react-redux';
-import { store } from '../../store/store';
 import userEvent from '@testing-library/user-event';
+import createMockStore from 'redux-mock-store';
+import { User } from '../../entities/user';
+import { Product } from '../../entities/product';
+
+jest.mock('../../hooks/use.products', () => ({
+  useProducts: jest.fn().mockReturnValue({
+    loadOneProduct: jest.fn(),
+    updateCurrentProduct: jest.fn(),
+  }),
+}));
 
 describe('Given EditProductPage Component', () => {
+  const mockedStore = createMockStore([]);
+
+  const initialState = {
+    users: { loggedUser: { profilePic: { url: '' } } as User },
+    products: {
+      products: [
+        { name: '', description: '', id: '123', price: 123 },
+      ] as Product[],
+    },
+  };
+
+  const store = mockedStore(initialState);
   beforeEach(() => {
     render(
       <Router>
@@ -17,7 +38,7 @@ describe('Given EditProductPage Component', () => {
     );
   });
 
-  describe('If we render form element', () => {
+  describe('When we render form element', () => {
     test('Then submit should be called with checkboxes in true', async () => {
       const firstFormElement = screen.getByRole('form');
       const submitButtonElement = screen.getAllByRole('button')[0];
@@ -34,9 +55,8 @@ describe('Given EditProductPage Component', () => {
   describe('If we render form element', () => {
     test('Then form should be rendered with checkboxes in true', async () => {
       const secondFromElement = screen.getByRole('form');
-      const secondSubmitButtonElement = screen.getAllByRole('button')[0];
 
-      await userEvent.click(secondSubmitButtonElement);
+      await fireEvent.submit(secondFromElement);
 
       expect(secondFromElement).toBeInTheDocument();
     });
