@@ -2,8 +2,6 @@
 
 **Desarrollo por:** Alejandro Irastorza Leal
 
-# Alien Bar - Sitio web de gestión de menú
-
 ## Descripción
 
 Este es un sitio web de gestión de menú que permite a los administradores agregar productos al menú y mostrarlo a los clientes. La aplicación se ha desarrollado utilizando React y TypeScript, ofreciendo una experiencia de usuario interactiva y robusta.
