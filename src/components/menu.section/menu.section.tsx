@@ -14,9 +14,17 @@ export function MenuSection({
 }: Props) {
   let productsByCategory;
   if (products) {
-    productsByCategory = products.filter(
-      (product) => product.category === category && !product.noStock
-    );
+    productsByCategory = products
+      .filter((product) => product.category === category && !product.noStock)
+      .sort((a, b) => {
+        if ((a.topOrder && !b.topOrder) || (a.new && !b.new)) {
+          return -1;
+        } else if ((!a.topOrder && b.topOrder) || (!a.new && b.new)) {
+          return 1;
+        } else {
+          return 0;
+        }
+      });
   }
 
   return (

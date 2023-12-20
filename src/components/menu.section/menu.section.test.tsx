@@ -7,7 +7,7 @@ import { store } from '../../store/store';
 import { Product } from '../../entities/product';
 
 describe('Given MenuCard component', () => {
-  describe('when we add a product and category in params', () => {
+  describe('when we add a product array with stock diffetence', () => {
     test('Then it should render', async () => {
       render(
         <Router>
@@ -20,6 +20,48 @@ describe('Given MenuCard component', () => {
                   noStock: false,
                   id: '123',
                   modelImg: { url: 'url.test.com' },
+                  new: true,
+                  topOrder: true,
+                } as Product,
+                {
+                  category: 'Test',
+                  noStock: false,
+                  id: '123',
+                  modelImg: { url: 'url.test.com' },
+                  new: true,
+                  topOrder: false,
+                } as Product,
+                {
+                  category: 'Test',
+                  noStock: false,
+                  id: '123',
+                  modelImg: { url: 'url.test.com' },
+                  new: false,
+                  topOrder: true,
+                } as Product,
+                {
+                  category: 'Test',
+                  noStock: false,
+                  id: '123',
+                  modelImg: { url: 'url.test.com' },
+                  new: true,
+                  topOrder: false,
+                } as Product,
+                {
+                  category: 'Test',
+                  noStock: false,
+                  id: '123',
+                  modelImg: { url: 'url.test.com' },
+                  new: false,
+                  topOrder: false,
+                } as Product,
+                {
+                  category: 'Test',
+                  noStock: false,
+                  id: '123',
+                  modelImg: { url: 'url.test.com' },
+                  new: false,
+                  topOrder: false,
                 } as Product,
               ]}
             ></MenuSection>
