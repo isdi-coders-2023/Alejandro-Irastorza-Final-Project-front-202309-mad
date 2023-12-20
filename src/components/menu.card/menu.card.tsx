@@ -7,12 +7,14 @@ type Params = {
 export function MenuCard({ product }: Params) {
   let currentUrl;
   let secureUrl;
+  let webpUrl;
 
   if (product) {
     currentUrl = product.modelImg.url.slice(4);
     secureUrl = 'https' + currentUrl;
+    const imgExtentionIndex = secureUrl.lastIndexOf('.');
+    webpUrl = secureUrl.slice(0, imgExtentionIndex) + '.webp';
   }
-
   if (!product) return <>Error loading your product.</>;
 
   return (
@@ -36,7 +38,7 @@ export function MenuCard({ product }: Params) {
         <img
           alt={'Bebida llamada: ' + product.name}
           className="card-image img-hover-zoom--colorize"
-          src={secureUrl}
+          src={webpUrl}
           loading="lazy"
         />
       </Link>
