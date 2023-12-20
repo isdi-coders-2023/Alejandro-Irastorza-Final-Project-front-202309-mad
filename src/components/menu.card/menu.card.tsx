@@ -25,6 +25,7 @@ export function MenuCard({ product }: Params) {
         </div>
 
         <img
+          alt={'Bebida llamada: ' + product.name}
           className="card-image img-hover-zoom--colorize"
           src={product.modelImg.url}
           loading="lazy"

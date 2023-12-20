@@ -57,7 +57,7 @@ export default function EditProductPage() {
       <ProductForm
         title="Editar"
         handleSubmit={handleSubmit}
-        productToEdit={currentProductMapped!}
+        productToEdit={currentProductMapped}
       ></ProductForm>
     </div>
   );
