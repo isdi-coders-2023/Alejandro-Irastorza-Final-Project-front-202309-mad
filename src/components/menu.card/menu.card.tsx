@@ -9,7 +9,7 @@ export function MenuCard({ product }: Params) {
   let secureUrl;
 
   if (product) {
-    currentUrl = product!.modelImg.url.slice(4);
+    currentUrl = product.modelImg.url.slice(4);
     secureUrl = 'https' + currentUrl;
   }
 
